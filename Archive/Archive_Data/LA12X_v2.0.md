@@ -1,0 +1,300 @@
+# LA12X - Master Spec Schema
+
+Schema_Version: 2.0 (Phase 2 - format refactor per skill update v0.2)
+Manufacturer: L-Acoustics
+Product_Category: Amplified_Controller (4-channel Class D amplifier with integrated DSP)
+Form_Factor: 19 inch rack, 2U
+
+## 출처 등록부 (Source Registry)
+
+| Source_ID | Document | Version / Date |
+|---|---|---|
+| OM | Owner's Manual (EN) | v10.1, 2023-08-31 |
+| SPS | Spec Sheet PDF (EN) | 2.5, 2025-08 |
+| AE | Architects and Engineers Spec (docx) | undated |
+| WEB-L | Website - List View | current |
+| WEB-O | Website - Overview | current |
+| WEB-F | Website - Full Spec | current |
+
+L-Acoustics 브랜드 규칙에 따라 이하 모든 섹션의 출처 표기는 오너 매뉴얼(OM)의 페이지/목차 위치를 최우선으로 기록한다.
+
+---
+
+## amplification (증폭부)
+
+| Key | Value | Unit |
+|---|---|---|
+| Channel_Count_In | 4 | ch |
+| Channel_Count_Out | 4 | ch |
+| Amplification_Class | Class D (high efficiency) | - |
+| Rated_Power_Per_Ch_2R7 [1] | 3300 | W |
+| Rated_Power_Per_Ch_4R [1] | 2600 | W |
+| Rated_Power_Per_Ch_8R [1] | 1400 | W |
+| Total_Power_Capability | 12000 | W |
+| Max_Output_Voltage_Peak | 157 | V |
+| Amplification_Gain | 32 | dB |
+| Output_Delay_Range | 0 - 1000 | ms |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.83 "Specifications > General" (최우선) / SPS 3p "Amplification and power supply" / AE "Technical requirements > Amplification" / WEB-O, WEB-L, WEB-F 스펙 표
+
+**측정 조건**: 출력 정격은 CEA-2006/490A 기준, 1 kHz sine burst, THD < 1%, 전 채널 구동 조건에서 측정. Amplification_Gain, Output_Delay_Range는 별도 조건 없이 사양값.
+
+**[1] 측정 버스트 길이 충돌**: OM과 SPS는 sine burst 20 ms로 명시(CEA-2006/490A 표준 조건). AE 시방서는 동일 항목을 "no limiter, 200 ms sine burst" 조건으로 명시 — 두 조건 모두 원문 그대로 보존. 채택 값은 20 ms 조건(OM+SPS 일치, 표준 규격 명시)을 대표값으로 사용했으나, 200 ms 조건의 AE 수치도 삭제하지 않음(수치 자체는 동일하게 3300/2600/1400 W로 일치, 조건 표기만 상이).
+
+---
+
+## power_supply (전원부)
+
+| Key | Value | Unit |
+|---|---|---|
+| PSU_Type | Universal SMPS with DSP-controlled PFC | - |
+| Mains_Voltage_Range | 100 - 240 (+/-10%) | V AC |
+| Mains_Frequency_Range | 50 - 60 | Hz |
+| Nominal_Current_100_120V | 30 | A |
+| Nominal_Current_200_240V [2] | 16 | A |
+| Power_Factor | greater than 0.9 | - |
+| Power_Consumption_Idle | 141 | W |
+| Power_Consumption_Standby | 10 | W |
+| Mains_Connector | powerCON 32 A | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.21 "Installation > Electrical specifications", p.23 "Power consumption" (최우선) / SPS 3p "Amplification and power supply" / AE "Technical requirements"
+
+**측정 조건**: Power_Consumption_Idle/Standby는 230/120/100 V 공통값(전압별 전류는 상이하나 W 기준 동일). Power_Factor는 전 전압에서 Standby 모드 제외, 230 V Idle 모드 제외 조건.
+
+**[2] 적용 전압 대역 표기 차이**: OM의 안전 섹션(p.7-8)은 "220-240 V: 16 A"로 서술하나, OM 스펙 섹션(p.21, p.83)과 SPS는 동일 항목을 "200-240 V: 16 A"로 표기. 두 표기 모두 보존 — 안전 섹션은 유럽 지역 규격(220-240 V) 관점의 서술로 판단되며, 스펙 섹션의 200-240 V가 제품 정격 표기로 더 넓은 범위를 포괄함.
+
+---
+
+## audio_performance (음향 스펙)
+
+| Key | Value | Unit |
+|---|---|---|
+| Frequency_Response | 20 - 20000 | Hz |
+| THD_N_8ohm | less than 0.05 | % |
+| THD_N_4ohm | less than 0.1 | % |
+| Output_Dynamic_Range | greater than 114 | dB |
+| Noise_Level [3] | less than -75 | dBV |
+| Channel_Separation | greater than 85 | dB |
+| Damping_Factor | greater than 400 | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.83 "Specifications > General" (최우선) / SPS 3p "Audio specifications" / AE "Technical requirements > Amplification"
+
+**측정 조건**: Frequency_Response는 8옴 부하 60 W 출력 및 4옴 120 W 출력 기준 +/-0.1 dB. THD_N은 20 Hz-10 kHz 대역, 각 부하별 동일 출력 기준. Output_Dynamic_Range와 Noise_Level은 20 Hz-20 kHz, 8옴, A-weighted 기준. Channel_Separation은 1 kHz, 4옴, 3채널 x 120 W 구동 기준. Damping_Factor는 1 kHz 이하, 8옴 기준.
+
+**[3] Noise_Level 충돌**: OM(개정판 v10.0에서 "노이즈 레벨 갱신" 이력 있음)과 SPS는 "-75 dBV"로 일치. AE 시방서는 동일 항목을 "-72 dBV"로 표기. 두 값 모두 보존 — 채택값 -75 dBV는 최신 개정 이력이 명시된 OM과 SPS 2개 소스 일치를 근거로 함. -72 dBV(AE)는 구버전 수치로 추정되나 원문 값은 삭제하지 않음.
+
+---
+
+## dsp (신호 처리)
+
+| Key | Value | Unit |
+|---|---|---|
+| DSP_Processor | 2x SHARC 32-bit floating point | - |
+| DSP_Sampling_Rate | 96 | kHz |
+| Routing_Matrix | 4x4 routing and summation | - |
+| EQ_Filters_Per_Output | 8 IIR + 4 FIR linear phase | - |
+| Speaker_Protection | L-DRIVE (excursion, temperature, over-voltage) | - |
+| Preset_Memory_User | 10 | slots |
+| Preset_Memory_Factory | 189 | slots |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.16 "Technical description > DSP architecture", p.36-42 "Operation > Using the main menu" (최우선) / SPS 3p "DSP" / AE "Technical requirements > DSP"
+
+**측정 조건**: 없음(사양값). Preset_Memory_User는 메모리 001-010(읽기/쓰기), Preset_Memory_Factory는 메모리 011-199(읽기 전용, 펌웨어 업데이트 시 자동 설치)로 구분.
+
+---
+
+## latency (지연 시간)
+
+| Key | Value | Unit |
+|---|---|---|
+| Latency_Standard | 3.84 | ms |
+| Latency_Low_Mode [4] | 0.84 | ms |
+| AVB_Max_Network_Latency | 2 | ms |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.86 "Specifications > Latency" (최우선) / SPS(웹 반영) / AE "Technical requirements > DSP > Latency"
+
+**측정 조건**: Analog/AES-EBU 입력 기준, 입력 샘플링 주파수와 무관하게 일정.
+
+**[4] Low latency 모드 수치 충돌**: OM p.86과 웹 Full Spec은 "0.84 ms"로 일치. AE 시방서는 동일 항목을 "0.76 ms"로 표기. 두 값 모두 보존 — 채택값 0.84 ms는 2개 소스 일치를 근거로 하며, 0.76 ms는 구버전 수치로 추정.
+
+---
+
+## input_analog (아날로그 입력)
+
+| Key | Value | Unit |
+|---|---|---|
+| Analog_Input_Channels | 4 | ch |
+| Input_Impedance | 22 | kOhm |
+| Max_Input_Level | 22 | dBu |
+| ADC_Architecture [5] | 4 cascaded 24-bit at 96 kHz | - |
+| Analog_Link_Type | passive parallel, 4x XLR3 male | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.15 "Signal processing and amplification > Analog", p.85 "Specifications > Analog input" (최우선) / SPS 3p "Inputs / Outputs" / AE "Technical requirements > Analog input"
+
+**측정 조건**: Input_Impedance는 balanced 기준. Max_Input_Level은 balanced, THD 1% 기준. ADC의 130 dB dynamic range는 20 Hz-20 kHz, A-weighted 기준.
+
+**[5] 문서 내부 표기 불일치**: OM 기술 설명 본문(p.15-16)은 "two cascaded 24-bit A/D converters"로 서술하나, 동일 문서의 스펙 섹션(p.85)과 SPS, AE는 모두 "4 cascaded"로 일치. 두 표기 모두 원문에 존재함을 기록하며, 스펙 섹션 및 타 소스 3건 일치를 근거로 "4 cascaded"를 채택값으로 사용.
+
+---
+
+## input_digital (디지털 입력)
+
+| Key | Value | Unit |
+|---|---|---|
+| Digital_Input_Channels | 4 | ch |
+| Digital_Standard [6] | AES/EBU (AES3) | - |
+| Supported_Sampling_Rates | 44.1 / 48 / 88.2 / 96 / 176.4 / 192 | kHz |
+| Supported_Word_Length | 16 / 18 / 20 / 24 | bit |
+| SRC_Output_Format | 24-bit at 96 kHz | - |
+| SRC_Dynamic_Range | 140 | dB |
+| SRC_THD_N | less than -120 | dBFS |
+| Digital_Input_Gain_Range | -12 to +12 | dB |
+| Digital_Link_Type | electronically buffered with failsafe relay, 2x XLR3 male | - |
+| Max_AES_Cable_Length | 300 | m |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.15 "Signal processing and amplification > AES/EBU", p.85 "Specifications > Digital input" (최우선) / SPS 3p "Inputs / Outputs" / AE "Technical requirements > Digital input, Sample Rate Converter"
+
+**측정 조건**: Max_AES_Cable_Length는 단일 케이블, 48 kHz 샘플링, Belden 1696A 또는 Klotz OT234H 케이블 기준. Digital_Input_Gain_Range는 0.1 dB 스텝.
+
+**[6] 디지털 규격 표기 차이**: OM, SPS, WEB-F는 "AES/EBU (AES3)"만 명시. AE 시방서만 동일 항목을 "AES/EBU (AES3) or S/PDIF"로 확장 표기. 두 표기 모두 기록 — AES3 단독 표기가 3개 소스 일치로 채택값이나, AE의 S/PDIF 병기 가능성도 삭제하지 않고 보존.
+
+---
+
+## input_avb (AVB 입력)
+
+| Key | Value | Unit |
+|---|---|---|
+| AVB_Certification | MILAN and Avnu certified (Bridge and Listener) | - |
+| AVB_Channels | 4 | ch |
+| AVB_Stream_Count | 1 (2 in redundancy mode) | streams |
+| AVB_Formats | AAF PCM32, IEC 61883-6 AM824 | - |
+| AVB_Standards | IEEE 802.1BA-2011 / 1722-2016 / 1722.1-2013 | - |
+| AVB_Bridge_Forwarded_Streams | up to 150 | streams |
+| Redundancy_Type | Milan-AVB seamless, automatic switchover and recovery | - |
+| Fallback_Modes | AVB to XLR, AES(AB) to XLR(CD) | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.15 "AVB", p.47-48 "AVB FALLBACK MODE, AES AB FALLBACK MODE", p.86 "Specifications > AVB" (최우선) / SPS 3p "I/O" / AE "Technical requirements > AVB input"
+
+**측정 조건**: AVB_Channels는 최대 8채널 스트림 1개에서 추출하는 조건. Fallback_Modes 절체 조건은 no clock, loss of lock, CRC error, bipolar encoding error, data slip이며, 복귀는 수동으로만 가능. Redundancy 모드는 star topology 필수(포트 1 = Primary, 포트 2 = Secondary).
+
+---
+
+## connectivity (커넥터)
+
+| Key | Value | Unit |
+|---|---|---|
+| Input_Connectors | 4x XLR3 female (2 pair analog/AES3 switching), 4x XLR3 male link | - |
+| XLR_Pin_Polarity | pin1 shield, pin2 plus (hot), pin3 minus (cold) | - |
+| Speaker_Connectors | 2x speakON 4-point, 1x CA-COM 8-point | - |
+| SpeakON_Left_Pinout | 1+/1- = Out1, 2+/2- = Out2 | - |
+| SpeakON_Right_Pinout | 1+/1- = Out3, 2+/2- = Out4 | - |
+| CACOM_Pinout | A/B = Out1, C/D = Out2, E/F = Out3, G/H = Out4 | - |
+| Network_Connectors | 2x etherCON RJ45, 1 Gb/s | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.14 "Front and rear panels", p.24-25 "Speaker panel", p.87 "Specifications > Remote control and monitoring" (최우선) / SPS 3p "Inputs / Outputs" / AE "Technical requirements > Connectors"
+
+**측정 조건**: 없음(커넥터 규격 및 결선표). 극성/핀맵 정보는 OM 내 텍스트 표(회로도 라벨 포함)로 확인되어 별도 이미지 분석은 수행하지 않음. XLR 결선은 IEC 60268-12 규격 준수.
+
+---
+
+## control_monitoring (제어 및 모니터링)
+
+| Key | Value | Unit |
+|---|---|---|
+| Remote_Software | LA Network Manager (Windows/Mac) | - |
+| Network_Topologies | daisy-chain, star, hybrid | - |
+| Third_Party_Control [7] | Q-SYS, Crestron, Extron, SNMP, Control4, Savant, HTTP API | - |
+| Front_Panel | 2x24 character LCD, rotary encoder, power/mute keys, status LEDs | - |
+| Settings_Protection | 4-digit PIN code, configurable in LA Network Manager | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.17 "L-NET remote control network", p.32-63 "Operation" (최우선) / SPS 3p "Control and monitoring" / AE "Technical requirements > Third-party management solutions" / WEB-O, WEB-F
+
+**측정 조건**: L-NET 네트워크는 최대 253대 제어 가능, CAT5e U/FTP 이상 케이블 사용.
+
+**[7] 서드파티 제어 목록 차이**: OM과 AE는 Q-SYS, Crestron, Extron, SNMP만 명시. SPS와 웹(WEB-O, WEB-F)은 여기에 Control4, Savant, HTTP API를 추가한 상위 목록을 명시. 두 목록 모두 보존 — 항목 누락이 아닌 문서 발행 시점 차이로 판단하여, 최신 소스(SPS, 웹)의 상위 집합을 채택값으로 사용.
+
+---
+
+## operating_conditions (동작 환경)
+
+| Key | Value | Unit |
+|---|---|---|
+| Operating_Temp_Range [8] | 0 to 50 | degrees C |
+| Cooling | temperature-controlled fans, front to rear airflow | - |
+| Fan_Count | 3 | ea |
+| Fan_Noise_Min | less than 34 | dBA |
+| Fan_Noise_Max | less than 62 | dBA |
+| EMC_Class | residential Class B | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.8 "Additional important safety instructions", p.83 "Specifications > General" (최우선) / SPS 3p "Operating conditions" / AE "Technical requirements > Operating conditions"
+
+**측정 조건**: Fan_Noise는 free field, 1 m 거리 기준(Min은 최저속, Max는 최고속).
+
+**[8] 동작 온도 하한 충돌**: OM 안전 섹션(p.8)은 "-5 degrees C to 50 degrees C"로 명시. OM 스펙 섹션(p.83), SPS, AE, WEB-F는 모두 "0 degrees C to 50 degrees C"로 일치. 두 값 모두 보존 — 채택값 0도는 3개 소스 일치와 최신 SPS(2.5판) 기준을 근거로 함. -5도(OM 안전 섹션)는 보다 보수적인 여유 범위 서술로 추정되며 삭제하지 않음.
+
+---
+
+## physical (물리적 스펙)
+
+| Key | Value | Unit |
+|---|---|---|
+| Width | 483 | mm |
+| Height | 88 | mm |
+| Depth | 419.1 | mm |
+| Weight | 14.5 | kg |
+| Protection_Rating | IP20 | - |
+| Finish | black | - |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.87 "Specifications > Physical data" (최우선) / SPS 3p "Physical data" / AE "Technical requirements > Physical data"
+
+**측정 조건**: Depth는 섀시 기준(419.1 mm). 프런트 핸들 포함 시 454.7 mm, 리어 브래킷 포함 최대 534.3 mm까지 확장(별도 치수, OM p.20). AE는 W/H/D를 483/88/455 mm로 반올림 표기하며, 세부 수치(419.1)와 정수 반올림(455) 모두 원문에 존재하는 것으로 보존.
+
+---
+
+## protection_summary (보호 회로)
+
+| Key | Value |
+|---|---|
+| Protection_Mains_PSU | over/under voltage, over temperature, overcurrent, inrush current, fuse protect |
+| Protection_Outputs | over current, DC, short circuit, rail over/under voltage, over temperature, HF energy above 25kHz detection |
+| Protection_Transducer | L-DRIVE: excursion, temperature, over-voltage |
+
+### 주석 및 출처 (Notes & Sources)
+
+**출처**: OM p.68-73 "Corrective maintenance > Error messages" (최우선) / SPS 3p "Circuit protection" / WEB-F
+
+**측정 조건**: 없음(보호 기능 목록).
+
+---
+
+## Null Report
+
+이번 소스 집합에서 정의되지 않아 null 처리된 항목: 없음(모든 스키마 키가 최소 1개 소스에서 확인됨).
+
+## 버전 변경 이력
+
+v1.0 to v2.0: 개별 셀 각주를 섹션 단위 "주석 및 출처"로 통합, 표에서 측정 조건/출처 컬럼 제거, 예외 충돌 항목만 각주 유지, L-Acoustics 브랜드 규칙에 따라 OM 위치 최우선 표기, 전체 문서에서 이모지 및 특수 아이콘 제거.
