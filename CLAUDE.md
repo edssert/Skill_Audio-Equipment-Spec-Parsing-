@@ -16,7 +16,7 @@ Also read `Session_Transfer_v*.md` (highest version at root) for the up-to-date 
 
 ## Repository layout
 
-Product data is organized by **category** (product type) then **brand**: `{category}/{brand}/...`. Categories are top-level folders sitting alongside `SKILL_v*.md`. The only category so far is `amplifiers/` (brand subfolders `LA` = L-Acoustics, `db` = d&b audiotechnik); `speakers/` and `amp_racks/` are expected to join it later using the identical internal pattern below.
+Product data is organized by **category** (product type) then **brand**: `{category}/{brand}/...`. Categories are top-level folders sitting alongside `SKILL_v*.md`. Two categories are populated so far — `amplifiers/` (brand subfolders `LA` = L-Acoustics, `db` = d&b audiotechnik) and `speakers/` (brand subfolders `LA`, `db`, `MY` = Meyer Sound) — using the identical internal pattern below; `amp_racks/` is expected to join later.
 
 - Root: exactly one latest file per cross-category concern — `SKILL_v{X.Y}.md` (the skill/ruleset) and `Session_Transfer_v{X.Y}.md` (project status) — plus the append-only `SKILL_Changelog.md` and one category folder per product type (currently `amplifiers/`). No product data lives at root itself.
 - `SKILL_Changelog.md` (root-level) — full version history of the skill doc, moved out of SKILL.md itself as of v1.13. Append-only exception file: add a row per new SKILL version, never rename/version it. Read it only when historical change context is needed.
