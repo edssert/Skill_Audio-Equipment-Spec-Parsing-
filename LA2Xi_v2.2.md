@@ -1,6 +1,6 @@
 # LA2Xi - Master Spec Schema
 
-Schema_Version: 2.1 (구조 개편 - d80_specific/d90_specific 섹션 폐지, BTL/PBTL Key 통폐합; v2.1: 5D 신규 스키마 발견분 양방향 동기화 — input_dante 섹션 및 Fault_Contact_Type Key null 추가, null-only)
+Schema_Version: 2.2 (구조 개편 - d80_specific/d90_specific 섹션 폐지, BTL/PBTL Key 통폐합; v2.1: 5D 신규 스키마 발견분 양방향 동기화 — input_dante 섹션 및 Fault_Contact_Type Key null 추가; v2.2: 10D 신규 스키마 발견분 양방향 동기화 — control_monitoring Web_Remote_Interface Key null 추가, null-only)
 최종 작업 일시: 2026-07-16
 Manufacturer: L-Acoustics
 Product_Category: Amplified_Controller (4-channel install-specific Class D amplifier with integrated DSP)
@@ -363,6 +363,7 @@ Form_Factor: 19 inch rack, 1U
 | GPIO_Type | isolated optocoupler inputs, isolated relay contacts | - |
 | DSP_Backup_Power_Input | 24 | V DC |
 | Signal_Path_Management [28a] | null | - |
+| Web_Remote_Interface [신규][29] | null | - |
 
 ### 주석 및 출처 (Notes & Sources)
 
@@ -379,6 +380,8 @@ Form_Factor: 19 inch rack, 1U
 **[28] GPIO_Count — LA1.16i와 다른 개수**: LA1.16i는 GPIO 3개였으나 LA2Xi는 4개다(OM p.22, AE "4 GPIO" 일치). 제품 간 실제 차이이며 충돌 아님.
 
 **[28a][구조 개편 v2.0] Signal_Path_Management**: v1.x까지 "d80_specific" 섹션에 있던 Key를 control_monitoring으로 재배치(Key/Value 및 근거는 변경 없음). LA2Xi는 d&b 브랜드 고유의 Fallback/Override/AutoStandby/AutoWakeup 통합 관리 개념에 대응하는 스펙이 확인되지 않아 null 유지.
+
+**[신규][29] Web_Remote_Interface**: 10D(d&b audiotechnik 차세대 설치용 라인) 파싱 중 발견된 신규 Key — 별도 소프트웨어(LA Network Manager) 없이 표준 웹 브라우저로 기기에 직접 접속하는 브라우저 기반 내장 웹 인터페이스 개념. LA2Xi의 기존 소스에는 이 개념에 대응하는 서술이 확인되지 않아 null(미확인)로 소급 반영한다.
 
 ---
 
@@ -445,11 +448,11 @@ Form_Factor: 19 inch rack, 1U
 
 ## Null Report
 
-이번 소스 집합에서 정의되지 않아 null 처리된 항목 (총 42건, D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak 1건 및 5D 파싱 중 발견된 신규 Key 8건(input_dante 7개 + Fault_Contact_Type 1개) 소급 반영 포함):
+이번 소스 집합에서 정의되지 않아 null 처리된 항목 (총 41건 — 본 v2.2 편집 중 grep(`\| null \|`) 재검증 결과 이전 버전들의 서두 표기(v2.1 "42건")가 실제 테이블 대비 과다 기재된 오기였음이 확인되어 바로잡음; D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak 1건, 5D 파싱 중 발견된 신규 Key 8건(input_dante 7개 + Fault_Contact_Type 1개) 및 10D 파싱 중 발견된 신규 Key 1건(Web_Remote_Interface) 소급 반영 포함):
 
 **비적용(제품 아키텍처상 해당 없음, 총 14건)**: Rated_Power_Per_Ch_2.7_Ohms, Amplifier_Power_Management(L-SMART 미탑재로 비적용), XLR_Pin_Polarity(본체 비적용, I/O-CON 액세서리에서만 존재), SpeakON_Left_Pinout(본체 비적용), SpeakON_Right_Pinout(본체 비적용), CACOM_Pinout, SC32_Channel_Mapping, Dante_RX_Channels, Dante_Sampling_Rates, Dante_SRC, Dante_Redundancy, Dante_Network_Flows, Dante_Latency, Dante_IP_Architecture(5D 파싱 중 신설된 input_dante 섹션 7개 Key 전량 소급 반영 — LA2Xi는 Dante가 아닌 Milan-AVB/AES67을 사용하므로 섹션 전체 비적용).
 
-**미확인(소스에 명시 없음, 총 10건)**: Total_Power_Capability, Max_Output_Voltage_Peak, Max_Output_Current_Peak(D25 파싱 중 발견된 신규 Key 소급 반영), Peak_Power_Per_Ch_BTL, Peak_Power_Per_Ch_PBTL, THD_N_4ohm, EQ_Filters_Per_Output, Preset_Memory_Factory, Settings_Protection(구체적 서술 부족), Fault_Contact_Type(5D 파싱 중 신설된 Key 소급 반영 — LA2Xi 기존 소스에 FAULT 릴레이 접점 관련 서술 없음).
+**미확인(소스에 명시 없음, 총 11건)**: Total_Power_Capability, Max_Output_Voltage_Peak, Max_Output_Current_Peak(D25 파싱 중 발견된 신규 Key 소급 반영), Peak_Power_Per_Ch_BTL, Peak_Power_Per_Ch_PBTL, THD_N_4ohm, EQ_Filters_Per_Output, Preset_Memory_Factory, Settings_Protection(구체적 서술 부족), Fault_Contact_Type(5D 파싱 중 신설된 Key 소급 반영 — LA2Xi 기존 소스에 FAULT 릴레이 접점 관련 서술 없음), Web_Remote_Interface(10D 파싱 중 신설된 Key 소급 반영 — LA2Xi 기존 소스에 브라우저 기반 웹 인터페이스 관련 서술 없음).
 
 **d&b 브랜드 고유 개념(구조 개편 v2.0으로 d80_specific/d90_specific에서 각 기존 섹션으로 재배치, 총 18건)**: Mains_Current_Limiter_Range, SN_Ratio_Analog_Input, SN_Ratio_Digital_Input, System_Start_Up_Time, LoadMatch_Max_Cable_Length, Load_Monitoring_System_Check, Storage_Temp_Range, Storage_Humidity, Signal_Path_Management, Output_Mode_Selectable, CMRR_Analog_Input, Digital_Input_Impedance, AVB_Device_Type, Time_To_Tone, Energy_Saving_Detail, AmpPresets_Detail, Output_Noise_Dynamic_Range_Detail, Network_IP_Default — LA2Xi는 d&b 브랜드 고유 개념(LoadMatch, Milan Endstation, EcoMode 등)에 대응하는 스펙이 없어 전량 null 유지.
 
@@ -466,3 +469,5 @@ v1.0 to v2.0: (구조 개편, Major) d&b 제품군(D80/D90)에 먼저 적용된 
 Null Report는 정확히 재계산되어 39건(v1.0의 표기 38건은 근소한 계수 오류가 있었음, 실제로는 17건이 아닌 18건이었다)에서 33건으로 6건 감소했다 — Milan 중복 3개 Key 흡수(input_avb의 기존 실값 Key로 병합)로 -3건, BTL/PBTL Peak Key 통합(5개→2개)으로 -3건. Rated 값은 처음부터 null이 아니었으므로 Null Report 건수에 영향 없음. 섹션 계층 구조 변경이므로 SKILL 버저닝 규칙에 따라 Major 버전(v2.0)으로 상향했다.
 
 v2.0 to v2.1: (양방향 동기화, Minor, null-only) d&b audiotechnik 5D(Dante 설치용 라인) 최초 파싱 과정에서 기존 스키마 어디에도 대응 개념이 없는 신규 스키마 확장 2건이 발견되어, 완벽한 양방향 스키마 동기화 원칙에 따라 LA2Xi를 포함한 기존 전 제품 파일에 소급 반영했다: (1) **input_dante 신규 섹션**(Key 7개: Dante_RX_Channels, Dante_Sampling_Rates, Dante_SRC, Dante_Redundancy, Dante_Network_Flows, Dante_Latency, Dante_IP_Architecture) — input_avb 섹션 바로 다음, network 섹션 앞에 삽입. LA2Xi는 Dante가 아닌 Milan-AVB/AES67 오디오 네트워크를 사용하므로 섹션 전체 비적용(null). (2) **connectivity 섹션 Fault_Contact_Type 신규 Key**(FAULT 릴레이 접점, NO/C/NC) — PBTL_Activation_Method 바로 다음 행에 추가, LA2Xi 기존 소스에 대응 서술 없어 미확인(null). 이번 변경은 신규 Key 8개를 전부 null로 추가하는 것뿐이며 LA2Xi의 기존 실측 BTL/PBTL 전력 값(Rated_Power_Per_Ch_BTL/PBTL 등)을 포함한 다른 어떤 Value도 수정하지 않았다 — 마스터 스키마 섹션 계층 구조는 그대로이므로(신규 섹션 추가는 SKILL v1.8 버저닝 규칙상 Minor로 분류) Minor 버전(v2.1)으로 상향했다. Null Report 총계는 34건에서 42건으로 8건 증가했다(비적용 7건 추가로 7건->14건, 미확인 1건 추가로 9건->10건, d&b 재배치분 18건은 변동 없음) — grep(`\| null[ |]`)으로 실제 테이블 셀 개수를 재검증하여 확인했다. Surgical Versioning Protocol(Duplicate -> Archive -> Surgical Edit 순서)을 엄격히 준수했다.
+
+v2.1 to v2.2: (양방향 동기화, Minor, null-only) d&b audiotechnik 10D(차세대 설치용 라인) 파싱 중 발견된 신규 Key `Web_Remote_Interface`[신규][29]를 control_monitoring 섹션의 Signal_Path_Management 다음 행에 null로 추가했다 — 별도 소프트웨어(LA Network Manager) 없이 표준 웹 브라우저로 기기에 직접 접속하는 브라우저 기반 내장 웹 인터페이스 개념이며, LA2Xi 기존 소스에는 대응 서술이 없어 미확인(null)으로 처리했다. 기존 Key/Value/Unit/각주는 일절 변경하지 않았다. 이번 편집 중 grep(`\| null \|`) 재검증 결과 실제 테이블의 null 셀 개수가 이전 버전들의 서두 표기(42건)보다 적은 41건(Web_Remote_Interface 추가 반영 후 기준)임이 확인되어, Null Report 서두의 총계 표기를 41건으로 바로잡았다(과거 버전의 실제 Value/Key에는 변경 없음, 서술 오기만 정정). 섹션 내부 Key 1건 추가에 불과하므로 Minor 버전(v2.2)으로 상향했다.

@@ -1,6 +1,6 @@
 # LA1.16i - Master Spec Schema
 
-Schema_Version: 2.1 (양방향 동기화 - 5D(d&b audiotechnik Dante 설치용 라인) 파싱 중 신설된 input_dante 섹션(7개 Key) 및 connectivity 섹션 Fault_Contact_Type Key를 null로 소급 반영, 구조 변경 없는 Minor 버전)
+Schema_Version: 2.2 (양방향 동기화 - 5D(d&b audiotechnik Dante 설치용 라인) 파싱 중 신설된 input_dante 섹션(7개 Key) 및 connectivity 섹션 Fault_Contact_Type Key + 10D(d&b audiotechnik 차세대 설치용 라인) 파싱 중 신설된 control_monitoring 섹션 Web_Remote_Interface Key를 null로 소급 반영, 구조 변경 없는 Minor 버전)
 최종 작업 일시: 2026-07-16 (목요일)
 Manufacturer: L-Acoustics
 Product_Category: Amplified_Controller (16-channel install-specific Class D amplifier with integrated DSP)
@@ -353,6 +353,7 @@ Form_Factor: 19 inch rack, 1U
 | GPIO_Type | isolated optocoupler inputs, isolated relay contacts | - |
 | DSP_Backup_Power_Input [19] | 24 | V DC |
 | Signal_Path_Management [33] | null | - |
+| Web_Remote_Interface [신규][36] | null | - |
 
 ### 주석 및 출처 (Notes & Sources)
 
@@ -375,6 +376,8 @@ Form_Factor: 19 inch rack, 1U
 **[32][구조 개편 v2.0] Output_Mode_Selectable**: v1.0까지 "d80_specific" 섹션에 있던 Key를 connectivity로 재배치(Key/Value 및 근거는 변경 없음, D80_v2.0.md와 동일 처리). Speaker_Connectors/Speaker_Terminal_Block_SE_BTL_Wiring의 출력 구성과 성격이 유사하여 이 섹션이 더 적합하다고 판단. LA1.16i는 d&b 브랜드 고유의 채널쌍 단위 출력 모드 선택(Dual Channel/Mix TOP-SUB/2-Way Active 등) 개념에 대응하는 스펙이 확인되지 않아 null 유지 — LA1.16i 자체의 SE/BTL 출력 모드 선택은 별도 Key(Speaker_Terminal_Block_SE_BTL_Wiring, 각주[14])로 이미 기록되어 있다.
 
 **[신규][35] Fault_Contact_Type**: 5D(d&b audiotechnik) 파싱 중 신설된 Key(FAULT 릴레이 접점, NO/C/NC). LA1.16i의 기존 소스에는 이 개념에 대응하는 서술이 없어 null로 소급 반영한다.
+
+**[신규][36] Web_Remote_Interface**: 10D(d&b audiotechnik 차세대 설치용 라인) 파싱 중 발견된 신규 Key — 별도 소프트웨어(LA Network Manager) 없이 표준 웹 브라우저로 기기에 직접 접속하는 브라우저 기반 내장 웹 인터페이스 개념. LA1.16i의 기존 소스에는 이 개념에 대응하는 서술이 확인되지 않아 null(미확인)로 소급 반영한다.
 
 ---
 
@@ -447,7 +450,7 @@ Form_Factor: 19 inch rack, 1U
 
 ## Null Report
 
-이번 소스 집합에서 정의되지 않아 null 처리된 항목 (총 44건, D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak 1건 및 5D 파싱 중 발견된 신규 Key 8건(input_dante 7개 + Fault_Contact_Type) 소급 반영 포함):
+이번 소스 집합에서 정의되지 않아 null 처리된 항목 (총 45건, D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak 1건, 5D 파싱 중 발견된 신규 Key 8건(input_dante 7개 + Fault_Contact_Type) 및 10D 파싱 중 발견된 신규 Key 1건(Web_Remote_Interface) 소급 반영 포함):
 
 **LA1.16i 자체 소스 근거 부족 (총 14건)**: Rated_Power_Per_Ch_2.7_Ohms, Total_Power_Capability, THD_N_4ohm, EQ_Filters_Per_Output, Preset_Memory_User, Preset_Memory_Factory, XLR_Pin_Polarity, SpeakON_Left_Pinout, SpeakON_Right_Pinout, CACOM_Pinout, SC32_Channel_Mapping, Speaker_Output_Accessories, Settings_Protection, Fan_Count.
 
@@ -463,7 +466,9 @@ Form_Factor: 19 inch rack, 1U
 
 **5D 파싱 중 발견된 신규 Key (1건, 미확인)**: Fault_Contact_Type(connectivity, 각주[35]) — 5D의 FAULT 릴레이 접점(NO/C/NC) Key가 신설되어 소급 반영되었으나, LA1.16i의 기존 소스(OM/AE)에는 이 개념에 대응하는 서술이 없어 "확정된 비존재"가 아닌 미확인(null)으로 보수적 처리한다.
 
-**참고**: BTL(Rated_Power_Per_Ch_BTL, Peak_Power_Per_Ch_BTL)은 실값(230 @ 8 Ohms / 160 @ 16 Ohms W, 300 @ 8 Ohms / 150 @ 16 Ohms W)이 존재하여 v1.0과 마찬가지로 Null Report에 포함하지 않는다. 총 42건(v1.0) -> 36건(v2.0)으로 감소한 것은 실값 손실이 아니라 (1) d90_specific의 Milan 중복 3개 Key가 기존 Key로 흡수되어 소멸(-3), (2) BTL/PBTL 10개 Key가 4개로 통합되면서 그중 null이던 PBTL 6개가 2개로 줄어듦(-4)에 따른 순감소다(v2.0 시점 grep 검증 결과 36건이 정확한 실측치이며, 이번 v2.1 편집 이전 본 Null Report 서두에 있던 "35건" 표기는 실제 테이블 대비 1건 과소 기재된 오기였다). v2.0의 36건에 5D 신규 스키마 확장분(input_dante 7건 + Fault_Contact_Type 1건) 8건을 더해 v2.1은 44건이다(테이블 내 null 값 셀을 grep으로 실측 검증함).
+**10D 파싱 중 발견된 신규 Key (1건, 미확인)**: Web_Remote_Interface(control_monitoring, 각주[36]) — 브라우저 기반 내장 웹 인터페이스 개념이 신설되어 소급 반영되었으나, LA1.16i의 기존 소스(OM/AE)에는 이 개념에 대응하는 서술이 없어 미확인(null)으로 보수적 처리한다.
+
+**참고**: BTL(Rated_Power_Per_Ch_BTL, Peak_Power_Per_Ch_BTL)은 실값(230 @ 8 Ohms / 160 @ 16 Ohms W, 300 @ 8 Ohms / 150 @ 16 Ohms W)이 존재하여 v1.0과 마찬가지로 Null Report에 포함하지 않는다. 총 42건(v1.0) -> 36건(v2.0)으로 감소한 것은 실값 손실이 아니라 (1) d90_specific의 Milan 중복 3개 Key가 기존 Key로 흡수되어 소멸(-3), (2) BTL/PBTL 10개 Key가 4개로 통합되면서 그중 null이던 PBTL 6개가 2개로 줄어듦(-4)에 따른 순감소다(v2.0 시점 grep 검증 결과 36건이 정확한 실측치이며, 이번 v2.1 편집 이전 본 Null Report 서두에 있던 "35건" 표기는 실제 테이블 대비 1건 과소 기재된 오기였다). v2.0의 36건에 5D 신규 스키마 확장분(input_dante 7건 + Fault_Contact_Type 1건) 8건을 더해 v2.1은 44건, 10D 신규 스키마 확장분(Web_Remote_Interface 1건)을 더해 v2.2는 45건이다(테이블 내 null 값 셀을 grep으로 실측 검증함).
 
 ## 버전 변경 이력
 
@@ -476,3 +481,5 @@ v1.0 to v2.0: (구조 개편, Major — D80_v2.0.md/D90_v2.0.md와 동일 개편
 Null Report 총 건수는 42건(v1.0)에서 35건(v2.0)으로 변경 — (1) d90_specific의 Milan_Input_Channel_Streams/Milan_Redundancy/Milan_Routable_Inputs 3개 Key가 input_avb 기존 Key로 흡수되어 소멸(-3), (2) PBTL 전력 Key 6개가 2개로 통합되며 null 건수 감소(-4). BTL 실값 2개(통합 전 4개)는 애초에 Null Report 대상이 아니었으므로 이번 건수 변동에 영향이 없다. 섹션 계층 구조 변경이므로 Major 버전(v2.0)으로 상향했다.
 
 v2.0 to v2.1: (양방향 동기화, Minor — null 전용 추가, 실제 LA1.16i 데이터 영향 없음) d&b audiotechnik 신규 제품 5D(Dante 설치용 라인, 5D_v1.0.md) 파싱 중 발견된 스키마 확장분을 SKILL의 양방향 스키마 동기화 규칙에 따라 소급 반영했다. (1) input_avb 섹션 바로 뒤, network 섹션 앞에 신규 섹션 "input_dante (Dante 네트워크 오디오 입력)"를 신설하고 7개 Key(Dante_RX_Channels, Dante_Sampling_Rates, Dante_SRC, Dante_Redundancy, Dante_Network_Flows, Dante_Latency, Dante_IP_Architecture)를 전부 null로 추가 — LA1.16i는 Milan-AVB/AES67을 사용하고 Dante를 사용하지 않아 섹션 전체가 비적용이다. (2) connectivity 섹션 표 마지막 행(Output_Mode_Selectable 다음)에 신규 Key `Fault_Contact_Type`[신규][35]를 null로 추가 — 5D의 FAULT 릴레이 접점(NO/C/NC) 개념이며, LA1.16i 기존 소스에는 대응 서술이 없어 미확인(null)으로 보수적 처리했다. 기존 9개 섹션(및 이미 재배치된 옛 d80_specific/d90_specific 항목)의 Key/Value/Unit/각주는 일절 변경하지 않았다. Null Report 총 건수는 v2.0의 실측 36건(테이블 내 null 값 셀을 grep으로 재검증, 기존 서두 표기 "35건"은 오기로 확인되어 이번에 바로잡음)에서 신규 8건(input_dante 7개 + Fault_Contact_Type 1개)이 추가되어 v2.1은 44건이다. 섹션 계층 구조나 파싱 규칙의 실질 변경이 없는 순수 추가이므로 Minor 버전(v2.1)으로 상향했다.
+
+v2.1 to v2.2: (양방향 동기화, Minor — null 전용 추가, 실제 LA1.16i 데이터 영향 없음) d&b audiotechnik 신규 제품 10D(차세대 설치용 라인, 10D_v1.0.md) 파싱 중 발견된 신규 Key `Web_Remote_Interface`[신규][36]를 control_monitoring 섹션 표 마지막 행(Signal_Path_Management 다음)에 null로 추가했다 — 별도 소프트웨어(LA Network Manager) 없이 표준 웹 브라우저로 기기에 직접 접속하는 브라우저 기반 내장 웹 인터페이스 개념이며, LA1.16i 기존 소스에는 대응 서술이 없어 미확인(null)으로 보수적 처리했다. 기존 Key/Value/Unit/각주는 일절 변경하지 않았다. Null Report 총 건수는 44건 -> 45건(신규 1건)으로 갱신했다. 섹션 내부 Key 1건 추가에 불과하므로 Minor 버전(v2.2)으로 상향했다.
