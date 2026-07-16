@@ -1,6 +1,6 @@
 # LA7.16 - Master Spec Schema
 
-Schema_Version: 2.1 (구조 개편 v2.0 유지 + 5D 양방향 동기화: input_dante 섹션 신설, connectivity Fault_Contact_Type 추가, null 전용)
+Schema_Version: 2.2 (구조 개편 v2.0 유지 + 10D 양방향 동기화: control_monitoring Web_Remote_Interface 추가, null 전용)
 최종 작업 일시: 2026-07-16 (목요일)
 Manufacturer: L-Acoustics
 Product_Category: Amplified_Controller (16-channel Class D amplifier with integrated DSP)
@@ -377,6 +377,7 @@ L-Acoustics 브랜드 규칙에 따라 이하 모든 섹션의 출처 표기는 
 | GPIO_Type [신규] | isolated optocoupler inputs, isolated relay contacts | - |
 | DSP_Backup_Power_Input [신규][9] | 24 | V DC |
 | Signal_Path_Management [9a] | null | - |
+| Web_Remote_Interface | null | - |
 
 ### 주석 및 출처 (Notes & Sources)
 
@@ -391,6 +392,8 @@ L-Acoustics 브랜드 규칙에 따라 이하 모든 섹션의 출처 표기는 
 **[신규][9] DSP_Backup_Power_Input 충돌**: OM(p.95)은 "1 x 24 V DC (± 10%) 15 W minimum"으로 명시. SPS(7p)는 동일 항목을 "24 V DC (±15%) / 0.8 A"로 표기 — 허용오차(±10% vs ±15%)와 정격 표시 단위(15 W vs 0.8 A, 24 V 기준 0.8 A는 약 19.2 W로 15 W와도 정확히 일치하지 않음)가 모두 상이하다. AE는 "Backup power circuit for the DSP: 24 V DC 2-point terminal block"으로 전압값만 명시. Value에는 세 소스 공통값인 "24 V DC"만 채택하고, 세부 허용오차/전류·전력 정격은 본 각주에서 OM/SPS 두 값을 모두 병기한다. LA12X 스키마에는 이 속성 자체가 없었다.
 
 **[9a][구조 개편 v2.0] Signal_Path_Management**: v1.x까지 "d80_specific" 섹션에 있던 Key를 control_monitoring으로 재배치(Key/Value 및 근거는 변경 없음). input_avb 섹션의 Fallback_Modes(간략 요약)와 개념적으로 관련되나, 상세 동작 로직은 이 Key에서 다룬다. LA7.16는 d&b 브랜드 고유 개념에 대응하는 스펙이 없어 null 유지.
+
+**[신규] Web_Remote_Interface (10D 파싱 중 신설, 양방향 동기화로 null 반영)**: 10D(d&b audiotechnik 차세대 설치용 라인) 파싱 중 발견된 신규 Key — 별도 소프트웨어(R1/ArrayCalc, L-Acoustics의 경우 LA Network Manager) 없이 표준 웹 브라우저로 앰프에 직접 접속하는 브라우저 기반 내장 웹 인터페이스 개념. LA7.16의 기존 소스에는 이 개념에 대응하는 서술이 확인되지 않아 null(미확인)로 소급 반영한다.
 
 ---
 
@@ -457,7 +460,7 @@ L-Acoustics 브랜드 규칙에 따라 이하 모든 섹션의 출처 표기는 
 
 ## Null Report
 
-이번 소스 집합에서 정의되지 않아 null 처리된 항목 (총 45건 — 구조 개편 v2.0으로 섹션 위치만 이동, 실질 Value는 하나도 변경되지 않음; D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak 1건 소급 반영 포함; 5D 파싱 중 발견된 신규 8건 소급 반영 포함):
+이번 소스 집합에서 정의되지 않아 null 처리된 항목 (총 46건 — 구조 개편 v2.0으로 섹션 위치만 이동, 실질 Value는 하나도 변경되지 않음; D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak 1건 소급 반영 포함; 5D 파싱 중 발견된 신규 8건 소급 반영 포함; 10D 파싱 중 발견된 신규 Key Web_Remote_Interface 1건 소급 반영 포함):
 
 **Phase 3-1까지(총 9건)**: Rated_Power_Per_Ch_2.7_Ohms(비적용, 양방향 동기화), Total_Power_Capability(v1.1 정정, 근거 부족), THD_N_4ohm, Preset_Memory_Factory, XLR_Pin_Polarity, SpeakON_Left_Pinout, SpeakON_Right_Pinout, CACOM_Pinout, Settings_Protection.
 
@@ -469,7 +472,9 @@ L-Acoustics 브랜드 규칙에 따라 이하 모든 섹션의 출처 표기는 
 
 **Phase 5(5D 양방향 동기화, v2.1, 총 8건 — 비적용 7건 + 미확인 1건)**: Dante_RX_Channels/Dante_Sampling_Rates/Dante_SRC/Dante_Redundancy/Dante_Network_Flows/Dante_Latency/Dante_IP_Architecture(신설 input_dante 섹션, 비적용 — LA7.16은 Milan-AVB 전용이며 Dante를 사용하지 않음), Fault_Contact_Type(connectivity, 미확인 — LA7.16 기존 소스에 FAULT 릴레이 접점 관련 서술이 확인되지 않아 원본 재검토 없이는 확정 불가).
 
-**증감 내역(45건 -> 36건 -> 37건 -> 45건)**: d90_specific의 Milan_Input_Channel_Streams/Milan_Redundancy/Milan_Routable_Inputs 3건이 기존 Key로 흡수되며 감소(-3), BTL/PBTL 10개 Key가 4개로 통폐합되며 감소(-6). Milan_Device_Type이 AVB_Device_Type으로 개명되었으나 Key 자체는 존속하므로 건수 변동 없음(45 - 9 = 36). 이후 D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak(amplification)가 소급 반영되어 +1(36 -> 37). 이후 5D 파싱 중 발견된 신규 8건(input_dante 섹션 7개 + connectivity Fault_Contact_Type 1개)이 소급 반영되어 +8(37 -> 45).
+**Phase 6(10D 양방향 동기화, v2.2, 총 1건 — 미확인)**: Web_Remote_Interface(control_monitoring, 미확인 — 별도 소프트웨어 없이 표준 웹 브라우저로 앰프에 직접 접속하는 브라우저 기반 내장 웹 인터페이스 개념. LA7.16 기존 소스에 대응 서술이 확인되지 않아 원본 재검토 없이는 확정 불가).
+
+**증감 내역(45건 -> 36건 -> 37건 -> 45건 -> 46건)**: d90_specific의 Milan_Input_Channel_Streams/Milan_Redundancy/Milan_Routable_Inputs 3건이 기존 Key로 흡수되며 감소(-3), BTL/PBTL 10개 Key가 4개로 통폐합되며 감소(-6). Milan_Device_Type이 AVB_Device_Type으로 개명되었으나 Key 자체는 존속하므로 건수 변동 없음(45 - 9 = 36). 이후 D25 파싱 중 발견된 신규 Key Max_Output_Current_Peak(amplification)가 소급 반영되어 +1(36 -> 37). 이후 5D 파싱 중 발견된 신규 8건(input_dante 섹션 7개 + connectivity Fault_Contact_Type 1개)이 소급 반영되어 +8(37 -> 45). 이후 10D 파싱 중 발견된 신규 Key Web_Remote_Interface(control_monitoring) 1건이 소급 반영되어 +1(45 -> 46).
 
 ## 버전 변경 이력
 
