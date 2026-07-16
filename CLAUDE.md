@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is not a software project — there is no code to build, lint, or test. It is a Claude Code **skill-creator project**: a working directory used to iteratively develop and exercise `SKILL_v1.10.md`, a skill that parses audio equipment (amplifiers/controllers) spec data from heterogeneous sources (owner's manuals, spec sheet PDFs, A&E docx specs, website tiers) into unified master-schema markdown files, one per product.
 
-There is no build/test/run command. "Doing work" in this repo means: reading source documents under `Original_PDFs/` and `Raw_Web_Data/`, and producing/updating the master schema `.md` files at the repo root, strictly per the rules in the current `SKILL_v*.md`.
+There is no build/test/run command. "Doing work" in this repo means: reading source documents under `{category}/{brand}/Original_PDFs/` and `{category}/{brand}/Raw_Web_Data/`, and producing/updating the master schema `.md` files under `{category}/{brand}/`, strictly per the rules in the current `SKILL_v*.md`.
 
 ## Essential starting point
 
@@ -16,13 +16,17 @@ Also read `Session_Transfer_v*.md` (highest version at root) for the up-to-date 
 
 ## Repository layout
 
-- Root: exactly one latest file per category — `SKILL_v{X.Y}.md` (the skill/ruleset) and one `{Product}_v{X.Y}.md` per product (master schema). No other files belong at root.
-- `Original_PDFs/{Product}/` — untouched original source documents (OM PDF, SPS PDF, AE docx), one subfolder per product. Never edit these. Naming convention: `{Product}_{DocType}_EN_{Version}.{ext}` where DocType is OM/SPS/AE.
-- `Raw_Web_Data/{Product}_Raw_Web_Data.md` — verbatim, unedited merge of copy-pasted website tiers (list view/overview/full spec) and any non-PDF text sources (e.g. txt A&E). Never paraphrase or clean this up.
-- `Archive/Archive_Skill/` — every superseded `SKILL_v*.md`.
-- `Archive/Archive_Data/{Product}/` — every superseded `{Product}_v*.md`.
-- `Archive/Archive_Meta/` — every superseded `Session_Transfer_v*.md`.
-- Small per-folder `CLAUDE.md` files exist inside `Archive/Archive_Data/` and `Original_PDFs/` giving local filing conventions for those folders specifically — read those when working inside them.
+Product data is organized by **category** (product type) then **brand**: `{category}/{brand}/...`. Categories are top-level folders sitting alongside `SKILL_v*.md`. The only category so far is `amplifiers/` (brand subfolders `LA` = L-Acoustics, `db` = d&b audiotechnik); `speakers/` and `amp_racks/` are expected to join it later using the identical internal pattern below.
+
+- Root: exactly one latest file per cross-category concern — `SKILL_v{X.Y}.md` (the skill/ruleset) and `Session_Transfer_v{X.Y}.md` (project status) — plus one category folder per product type (currently `amplifiers/`). No product data lives at root itself.
+- `{category}/{brand}/{Product}_v{X.Y}.md` — the latest master schema file per product, at the brand folder's root.
+- `{category}/{brand}/Original_PDFs/{Product}/` — untouched original source documents (OM PDF, SPS PDF, AE docx), one subfolder per product. Never edit these. Naming convention: `{Product}_{DocType}_EN_{Version}.{ext}` where DocType is OM/SPS/AE.
+- `{category}/{brand}/Raw_Web_Data/{Product}_Raw_Web_Data.md` — verbatim, unedited merge of copy-pasted website tiers (list view/overview/full spec) and any non-PDF text sources (e.g. txt A&E). Never paraphrase or clean this up.
+- `{category}/{brand}/Archive/{Product}/` — every superseded `{Product}_v*.md` for that product.
+- `Archive/Archive_Skill/` (root-level) — every superseded `SKILL_v*.md`.
+- `Archive/Archive_Meta/` (root-level) — every superseded `Session_Transfer_v*.md`.
+- A `CLAUDE.md` inside each category folder (e.g. `amplifiers/CLAUDE.md`) documents that category's brand-folder conventions — read it when working inside that category.
+- `upload/` — gitignored local staging folder for newly-supplied source documents not yet filed into `Original_PDFs/`. Kept empty in the repo; the user drops new manuals/spec sheets here between sessions.
 
 ## Core workflow rules (see SKILL.md for full detail — this is a map, not the ruleset)
 
@@ -37,4 +41,4 @@ Also read `Session_Transfer_v*.md` (highest version at root) for the up-to-date 
 ## Practical notes
 
 - Master schema files can be large (25–40 KB); when verifying a file's completeness after writing, prefer the Read tool (full read, or targeted offset) or Grep for an end-of-file marker over shell `cat`/`wc`, since this project's history includes cases of shell tools reporting stale content on large files.
-- When asked to add or update a product, check both the root file list and `Session_Transfer` for the current count/state of tracked products before starting — the "Phase" the project is in (see SKILL.md workflow section) affects whether all product files must be re-output together or a summarized diff is acceptable first.
+- When asked to add or update a product, check both the relevant `{category}/{brand}/` file list and `Session_Transfer` for the current count/state of tracked products before starting — the "Phase" the project is in (see SKILL.md workflow section) affects whether all product files must be re-output together or a summarized diff is acceptable first.
