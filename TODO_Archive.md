@@ -4,6 +4,30 @@
 
 형식: `- [완료/취소] YYYY-MM-DD — 항목 요약 (관련 파일/버전)`
 
+## 2026-07-18 (계속 3)
+
+- [완료] 버전 변경 이력(changelog) 전수 보강 — `speakers/LA/*.md` 29개 파일(K1/K2/K3/K3i/Kara_II/Kara_IIi/Kiva_II/KS21/KS21i/KS28/L2/L2D/CS1/5XT/SB10i/SB15m/SB18/SB18_IIi/SB6i/Soka/Syva/Syva_Low/Syva_Sub/X12/X15_HiQ/X4i/X6i/X8/X8i)에서 파일명 버전과 changelog 표 마지막 행 버전이 어긋나 있던 문제를 해소 — 각 파일을 Archive의 직전 문서화 버전과 diff해 실제 변경 내용(Product_Series/Product_Type 신규 Key, Cardioid_Capability, signal_processing 섹션 삭제, KS21/L2의 "시간 배분상" 위반 시정 등)을 근거로 changelog 행을 작성, 서브에이전트 4개 배치(7+5+9+8 파일)로 병렬 진행 후 전수 grep 재검증으로 0건 누락 확인. speakers/db·MY는 이미 정상이었음. 참고: 이전 세션 요약에서 "K1/KS21도 완료"로 잘못 기록됐던 것이 이번 재확인 과정에서 드러남 — 완료 보고는 검증 근거 동반 원칙을 TODO.md 참고란에 추가.
+
+## 2026-07-18 (계속 2)
+
+- [완료] `[신규]` 각주 태그 프로젝트 전체 제거 — amplifiers 14개 파일(LA1.16i/LA2Xi/LA4X/LA7.16i/LA7.16/LA12X, D25/D40/D80/D90/5D/5DM/10D/25D) 전부에서 시점 경과로 무의미해진 `[신규]` 텍스트만 제거(각주 번호는 유지), 서브에이전트 4개 배치(haiku)로 병렬 진행 및 검증. speakers 폴더는 이번 라운드에서 미착수(범위는 amplifiers로 확정됨).
+- [완료] amplifiers "원본을 재조회하지 않고" 핑계성 미확인 패턴 5개 파일 전수 재조사 완료 — LA12X(v3.3, Bridging_Support/AES67_Support=No), LA7.16i(v2.4, 18개 Key 중 AVB_Device_Type/Network_IP_Default 2건 실값 확보 나머지 16건 재검색 후 미확인 유지), LA7.16(v2.4, 26개 Key 중 5건 실값/9건 확정비적용/12건 재검색 후 미확인), D80(v2.4, 15개 Key 재조사 + 범위 밖 Web_Remote_Interface 보너스 확인 총 7건 실값, Bridging_Support/AES67_Support/Service_Port_Type=No 확정), D90(v2.4, 9개 Key 재검증 전부 재검색 후 미확인 유지 + Web_Remote_Interface/Max_Output_Current_Peak 실값 확보). 각 제품 자신의 OM/SPS/AE 원본을 직접 재조회(pdftotext -layout, 필요시 PowerShell+Windows.Data.Pdf 이미지 렌더링)했으며, "재조회하지 않음" 각주 언어는 전부 실제 재검색 근거로 재작성. 서브에이전트 4개(LA7.16i/D80/LA7.16/D90) + 메인 세션 직접(LA12X, D80/D90 후속 보강) 진행.
+- [완료] README.md 한국어 재작성 — 공유 대상(한국인)이 "최신 버전 제품별 .md 파일만 보면 된다"는 점과 작업 방식(원본 재검토 → Key 매핑 → 버전 관리)을 mermaid 다이어그램과 함께 안내하도록 재작성(폴더구조/버전관리 세부는 부록으로 축소).
+- [완료] TODO.md/TODO_Archive.md 구조 정리 — 완료 항목 상세 서술을 TODO.md에서 전부 제거하고 TODO_Archive.md로 이관, TODO.md는 "지금 뭘 해야 하는가"만 남도록 재작성(사용자 지시).
+
+## 2026-07-18
+
+- [완료] PANTHER(Meyer Sound) L/M/W 개별 파일 분리 — 통합 파일(PANTHER_v1.0~v1.9, 이력은 speakers/MY/Archive/PANTHER/)을 PANTHER_L/M/W_v1.0.md 3개로 재분리, 차이는 Max_SPL_Peak/AES75_Max_Linear_SPL/Nominal_Directivity_Horizontal_deg 3개 Key뿐. speakers/CLAUDE.md에 파트넘버 무관 분리 예외 사례로 명시(향후 자동 일반화 금지 경고 포함).
+- [완료] signal_processing 섹션(d&b 고유 CUT_Mode/HFC/Coupling) speakers/LA 41개 파일에서 전면 삭제 — 브랜드 고유 Key가 다른 브랜드 파일에 null로 잘못 동기화된 규칙 위반(speakers/CLAUDE.md 규칙 2) 시정, Null Report 재계산.
+- [완료] Surgical Versioning Protocol 위반 소급 시정 — Cardioid_Capability/Product_Series 작업 중 34개 기존 버전 파일을 Duplicate→Archive→Edit 절차 없이 직접 편집한 위반 발견, git HEAD에서 원본 복구해 각 Archive로 이관 + 라이브 파일 전부 다음 마이너 버전 승격(K1 v1.10, KS21 v1.3 등). PowerShell `$1` 변수보간 버그로 손상된 Null Report 줄도 함께 복구.
+- [완료] "시간 배분상/시간 제약상" 핑계성 미확인 전수 재조사 — 프로젝트 전체(speakers/amplifiers/루트) 재스캔, 실제 라이브 위반 3건(KS21 Dimensions_Raw, L2 mechanical_safety 6행, X8i 각주 잔여 문구) 원본 페이지 이미지 렌더링으로 재조사해 해소.
+- [완료] Product_Type/Product_Series 신규 Key 2종 전면 투입(speakers 44개 파일) — 최초 AE 헤더 1번째 줄로 채웠던 Product_Type을 사용자 지적("A 시리즈는 Constant Curvature Line 아닌가")으로 헤더 5번째 줄(고정/가변 곡률 축) 기준 재정의: A=Constant/K=Variable/L2·L2D=Progressive Curvature Line Source, 나머지 카테고리는 유지.
+- [완료] install/recessed 파생형 Frequency_Response/RMS_Power_Handling 상속 정책 신설 및 적용 — Sokar/X4r/SB6r/SB10r 4개 파일에 표준형(Soka/X4i/SB6i/SB10i) 값 상속 반영, WEEE_Marking은 정책 대상 제외.
+- [완료] GSL8/GSL12 Width/Height/Depth 치수 데이터 누락 해결 — "렌더링 도구 없음"이라는 낡은 각주를 PowerShell+Windows.Data.Pdf(WinRT) 렌더링으로 대체해 실값 확보(1300/391/627mm), v1.7→v1.8.
+- [완료] README.md 작성 — 저장소 목적/사용법을 한국어로, 공유 대상(한국어 사용자)이 "최신 버전 제품별 .md 파일만 보면 된다"는 점을 최우선으로 안내하도록 재작성, 작업 흐름 mermaid 다이어그램 포함.
+- [완료] git 커밋+푸시(91c62c3, origin/main) — README 신규 작성/PANTHER 분리/signal_processing 정리/버저닝 소급 시정/Product_Type·Series 신규 투입/GSL 치수 수정 등 104개 파일, 사용자 명시적 지시로 최우선 진행.
+- [완료] amplifiers "원본을 재조회하지 않고" 핑계성 미확인 패턴 조사 — 프로젝트 전체 스캔으로 LA12X/LA7.16i/LA7.16/D80/D90 5개 파일에서 발견. LA12X의 Bridging_Support/AES67_Support 2개 Key를 자신의 SPS(EN 2.5) p.3 "AMPLIFIED CONTROLLERS – THE RANGE" 비교표 페이지 이미지 렌더링으로 재조회해 둘 다 No로 확정(v3.2→v3.3, Null Report 51건→49건). 나머지 4개 파일은 미착수.
+
 ## 2026-07-17
 
 - [완료] K1_Delay_ms → Primary_Element_Delay_ms 컬럼명 전면 개명, 라이브 파일 31개 (SKILL v1.18 신규 규칙 반영, TaskList #23)

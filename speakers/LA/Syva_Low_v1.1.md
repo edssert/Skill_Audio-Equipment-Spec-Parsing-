@@ -174,3 +174,4 @@
 | Version | 변경 내용 |
 |---|---|
 | v1.0 | 최초 작성 — speakers 카테고리(Syva의 컴패니언 고출력 저역확장 서브우퍼, 2x12"). KS28_v1.5.md를 스켈레톤으로 사용, Syva_OM_EN.pdf(Syva/Syva Low/Syva Sub 공용 문서) + Syva_Low_AE_EN.docx 통합. Syva와 물리적으로 별개 제품(자체 스펙 표/치수 도면)이라 별도 파일 분리. 신규 커넥터 개념 AutoConnect_Pinout 적용(단순 전원 패스스루 역할, Syva 자신의 AutoConnect와는 다른 단순 구조). delay_defaults는 KS28과 동일한 구조적 이유(2차 엘리먼트 전용)로 미확인 유지 — 실값은 Syva_v1.0.md에 이미 기록됨. Cardioid_Capability=No 최초 확인. |
+| v1.1 | 프로젝트 전역 동기화 라운드(사용자 지시 2026-07-17). Product_Series(S Series)/Product_Type(Subwoofer) Key 신설 — Syva_Low_AE_EN.docx 최상단 헤더("Syva Low - Subwoofer" / "S Series") 기준, 서브우퍼 계열이지만 KS21/SB 계열과 달리 Syva 패밀리는 시리즈명이 명시됨(Syva 자신과 동일 "S Series"). d&b 고유 개념인 signal_processing 섹션(CUT_Mode_Available/HFC_Function_Settings/Coupling_Function_Range) 삭제 — L-Acoustics 제품에는 해당 개념 자체가 없어 비적용 표기에서 섹션 삭제로 정리(Link_Connector/Inter_Enclosure_Angles_deg는 비적용으로 잔류). null 총계 17건(비적용 5건)에서 14건(비적용 2건)으로 갱신. |
