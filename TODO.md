@@ -8,11 +8,11 @@
 
 ## 진행 중
 
-- [ ] **5XT** — 완전 미착수, 카테고리조차 불명(미리 짐작 금지, 원본에서 처음부터 판정). `upload/5XT_AE_EN.docx`, `upload/5XT_OM_EN.pdf`.
+- [ ] **최종 동기화 라운드(TaskList #39)** — 신규 제품 파싱 전부 완료(`upload/` 완전 비어있음 확인됨). 아래 "완료 대기" 섹션 항목 착수 시작. 규모가 크므로(전체 `speakers/LA` 20+ 파일 대상) 세션 재개 시 진행 상황 이 섹션에 기록할 것.
 
-## 완료된 신규 제품 (2026-07-17): CS1, SB10i, SB10r, SB15m, SB18, SB18_IIi, Soka, Sokar, Syva, Syva_Low, Syva_Sub, X15 HiQ
+## 완료된 신규 제품 (2026-07-17): CS1, SB10i, SB10r, SB15m, SB18, SB18_IIi, Soka, Sokar, Syva, Syva_Low, Syva_Sub, X15 HiQ, 5XT
 
-12개 제품 모두 파싱 완료, 소스 원본은 각 `speakers/LA/Original_PDFs/{제품명}/`에 파일링, `upload/`의 중복 원본은 삭제 완료. 상세는 `TODO_Archive.md` 참조. Syva 계열은 물리적으로 3개 별개 제품(자체 스펙표/치수도면 보유)으로 판정해 GSL8/GSL12 전례에 따라 분리 파일 처리, 공용 OM은 3개 폴더 모두에 복제 보존(L2/L2D 전례). Syva Sub AE 시방서의 대역폭 이중 표기(29-200Hz 세트)가 OM에 대응 프리셋명이 없어 미확정 상태로 보존됨(재조사 필요). X15 HiQ는 기존 X 시리즈(전부 단일채널 패시브)와 달리 자체 핀아웃 표로 확인된 진짜 능동 2-way(K3 스켈레톤 사용) — 이 카테고리에서 "X 시리즈=패시브"라는 기존 경험적 패턴을 뒤집는 최초 예외 사례. Max_Enclosures_Per_Controller 표 자체가 원문에 없어 null 유지, OM/AE 간 Finish_Color 옵션 수 불일치(OM 2종 vs AE 3종) 보존.
+13개 제품 모두 파싱 완료, 소스 원본은 각 `speakers/LA/Original_PDFs/{제품명}/`에 파일링, `upload/`는 이제 완전히 비어있음(정리 완료). 상세는 `TODO_Archive.md` 참조. Syva 계열은 물리적으로 3개 별개 제품(자체 스펙표/치수도면 보유)으로 판정해 GSL8/GSL12 전례에 따라 분리 파일 처리, 공용 OM은 3개 폴더 모두에 복제 보존(L2/L2D 전례). Syva Sub AE 시방서의 대역폭 이중 표기(29-200Hz 세트)가 OM에 대응 프리셋명이 없어 미확정 상태로 보존됨(재조사 필요). X15 HiQ는 기존 X 시리즈(전부 단일채널 패시브)와 달리 자체 핀아웃 표로 확인된 진짜 능동 2-way(K3 스켈레톤 사용) — 이 카테고리에서 "X 시리즈=패시브"라는 기존 경험적 패턴을 뒤집는 최초 예외 사례. 5XT는 X8 스켈레톤(패시브 코액시얼)이나 정육면체 캐비닛(165×165×165mm, AE·도면 완전 일치)과 speakON 병렬 screw terminal(신규 Key `Screw_Terminal_Pinout`)이 특징.
 
 ## 진행 중 — Cardioid_Capability 신규 Key 전면 동기화 (사용자 지적 2026-07-17)
 
