@@ -4,6 +4,25 @@
 
 형식: `- [완료/취소] YYYY-MM-DD — 항목 요약 (관련 파일/버전)`
 
+## 2026-07-18 (계속 7, 심야)
+
+- [완료] Null Report 결합형 불릿 오카운트 감사를 speakers/MY 8개 파일까지 확장 완료 — PANTHER-L/M/W/TIGRA-L/W/LEOPARD/LEOPARD-M80/LINA 전부 mechanical_safety의 Safe_Limit 미확인이 다중 Configuration 행을 1건으로 뭉뚱그린 동일 오카운트였음을 확인·정정(2~5개 행씩). speakers/db(GSL8/GSL12)는 단일 placeholder 행 구조라 해당 없음 확인. 이로써 speakers 카테고리 전체(51개 파일 중 이 패턴이 실제로 존재했던 40개) 정정 완료.
+
+## 2026-07-18 (계속 6, 심야)
+
+- [완료] Null Report 결합형 불릿 오카운트 전수 감사(총 32개 파일) — K1에서 발견된 문제(총계가 "v1.6 시점 기준"에 멈춰있고 preset 표의 여러 행에 걸친 null 셀들이 "전 행"으로 뭉뚱그려져 1건으로만 카운트)를 계기로 speakers/LA 전체를 스캔. (A) preset_guide_and_matching 다중 행 부분-null 패턴 26개 파일을 서브에이전트 4개 배치로 정정: 5XT(v1.2), A10_Focus(v1.5), A10_Wide(v1.5), A10i_Focus(v1.5), A10i_Wide(v1.6), A15_Focus(v1.6), A15_Wide(v1.5), A15i_Focus(v1.5), A15i_Wide(v1.5), K1(v1.11), K3(v1.8), L2(v1.7), L2D(v1.4), SB15m(v1.2), SB18(v1.2), SB18_IIi(v1.2), Soka(v1.2), Sokar(v1.2), Syva(v1.2), X12(v1.4), X15_HiQ(v1.2), X4i(v1.4), X4r(v1.4), X6i(v1.4), X8(v1.4), X8i(v1.4). CS1_v1.2.md는 재확인 결과 이미 정확해 수정 불필요. (B) 추가로 발견된 다른 결합형 불릿 유형 6개 파일을 메인 세션에서 직접 정정: K2(v1.5)/K3i(v1.8)/Kara_II(v1.8)/Kara_IIi(v1.8) — Kiva II/L2 투입으로 신설된 3개 Key가 비적용 목록에 미반영된 패턴; Kiva_II(v1.6) — RMS_Power_Handling_LF/HF 결합 표기 오카운트; KS28(v1.8) — mechanical_safety Safe_Limit 3행이 "여러 셀"로 뭉뚱그려진 오카운트. 최종 grep 검증(파일 존재/Archive 이관/git status 정합성, orphan 0건)까지 완료. 데이터(Key/Value/Unit) 자체는 전혀 변경하지 않음 — 순수 요약 통계(Null Report 미확인/비적용/총계) 정정. 이 감사가 preset_guide_and_matching 외에 mechanical_safety/단순 Key 결합형 불릿까지 확장됨이 확인되어, speakers/LA 나머지 파일(db/MY 브랜드 포함)에도 유사 패턴이 남아있을 가능성을 TODO.md에 후속 항목으로 기록.
+- [완료] Session_Transfer_v1.10.md 신규 작성 — v1.9가 2026-07-17 시점에 멈춰 대규모 세션 작업(제품 수 28→67개 등)을 반영하지 못하고 있던 것을 전면 갱신, 이전 버전은 Archive/Archive_Meta/로 이관(Surgical Versioning Protocol 준수).
+
+## 2026-07-18 (계속 5, 심야)
+
+- [완료] Meyer Sound 신규 제품 3종(TIGRA/LEOPARD/LINA) 파싱 — `upload/` 폴더 제공 원본으로 5개 파일 작성: TIGRA_L/TIGRA_W(지향각 베리언트 분리, PANTHER 선례 재확인 후 확정), LEOPARD/LEOPARD-M80(동일 패턴, 사용자 취침으로 재확인 없이 선례 자동 적용 — 다음 세션 재검토 여지 있음), LINA(베리언트 없는 단일 모델). Original_PDFs 3개 폴더 파일링 완료. 신규 발견 Key 9종(Linear_Peak_SPL/Phase_Response/THD_IM_TIM/Amplifier_Total_Output_Power + 전류 기반 소비전력 5종)을 PANTHER x3+TIGRA x2에 양방향 동기화 완료, 전 8개 파일 Key-list parity 검증 완료. `speakers/CLAUDE.md`에 Meyer Sound 브랜드 내부 다양성(AES75 유무/IP 등급 유무/W·A 단위 차이/LED 명칭 차이) 참고사항 추가.
+- [완료] 버저닝 프로토콜 위반 자체 발견·즉시 시정 — PANTHER_L/M/W 양방향 동기화 편집 중 이미 git 커밋된 v1.0 파일을 직접 편집한 실수를 곧바로 발견해 git HEAD 원본을 Archive로 복구하고 편집분을 v1.1로 이전. TODO.md에 "커밋된 파일 편집 전 git status 먼저 확인" 교훈 추가.
+- [완료] TIGRA/LEOPARD Usable_Bandwidth_Hz 측정조건 각주 누락 정정(사용자 지적 2026-07-18) — TIGRA는 조건 서술 자체가 원문에 없다는 사실을, LEOPARD는 조건부 서술이 있다는 사실을 각각 명시적 각주로 추가.
+
+## 2026-07-18 (계속 4)
+
+- [완료] 치수(Dimensions) W/H/D 축 구분 신뢰도 전수 감사 — speakers/LA(43)+db(2)+MY(3) 전 파일의 Width_mm/Height_mm/Depth_mm 근거를 (1) A&E 명시적 축 라벨링, (2) 도면 이미지 렌더링 확인, (3) 미확인/유사값 추정 3그룹으로 분류. 대부분(A/K/KS28/L2/L2D/SB10i/SB15m/SB18/SB18_IIi/SB6i/Soka/Syva 계열/X-시리즈/5XT/PANTHER)은 이미 (1)로 확정 상태였고 GSL8/GSL12는 이미 (2)로 확정 상태였음을 재확인. A&E 시방서 자체가 없어 근거가 약했던 CS1/SB10r/SB6r/Sokar/X4r 5개 제품만 (3) 위험군으로 식별 — CS1은 재렌더링 결과 v1.0 당시 이미 이미지 검증이 되어 있었음을 확인(버전 변경 없이 원상복구), 나머지 SB10r/SB6r/Sokar/X4r 4개는 PowerShell+Windows.Data.Pdf로 해당 도면 페이지를 직접 렌더링·육안 확인해 기존 Width/Height/Depth 값이 전부 정확함을 재확인(SB10r v1.1→v1.2, SB6r v1.3→v1.4, Sokar v1.1→v1.2, X4r v1.3→v1.4, 각주만 보강, Value 변경 없음). 축 표기 순서(W,H,D)의 브랜드별 차이 우려도 점검 — GSL은 이미 물리적 정합성 기반 독립 검증, PANTHER는 AE가 "wide/high/deep" 단어로 직접 라벨링해 순서 문제 자체가 없음을 확인.
+
 ## 2026-07-18 (계속 3)
 
 - [완료] 버전 변경 이력(changelog) 전수 보강 — `speakers/LA/*.md` 29개 파일(K1/K2/K3/K3i/Kara_II/Kara_IIi/Kiva_II/KS21/KS21i/KS28/L2/L2D/CS1/5XT/SB10i/SB15m/SB18/SB18_IIi/SB6i/Soka/Syva/Syva_Low/Syva_Sub/X12/X15_HiQ/X4i/X6i/X8/X8i)에서 파일명 버전과 changelog 표 마지막 행 버전이 어긋나 있던 문제를 해소 — 각 파일을 Archive의 직전 문서화 버전과 diff해 실제 변경 내용(Product_Series/Product_Type 신규 Key, Cardioid_Capability, signal_processing 섹션 삭제, KS21/L2의 "시간 배분상" 위반 시정 등)을 근거로 changelog 행을 작성, 서브에이전트 4개 배치(7+5+9+8 파일)로 병렬 진행 후 전수 grep 재검증으로 0건 누락 확인. speakers/db·MY는 이미 정상이었음. 참고: 이전 세션 요약에서 "K1/KS21도 완료"로 잘못 기록됐던 것이 이번 재확인 과정에서 드러남 — 완료 보고는 검증 근거 동반 원칙을 TODO.md 참고란에 추가.
