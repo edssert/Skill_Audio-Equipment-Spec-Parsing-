@@ -8,11 +8,18 @@
 
 **운영 규칙 3(사용자 지시, 2026-07-18 심야)**: 사용자가 자리비움 — 질문하지 말고 계속 작업 진행(판단 필요 지점은 합리적으로 스스로 결정, 각주로 근거 남김). TODO.md 갱신을 항상 최우선으로 유지.
 
-마지막 갱신: 2026-07-18 07:45
+마지막 갱신: 2026-07-18 14:05
 
 ## 진행 중
 
-(현재 진행 중인 항목 없음 — Null Report 결합형 불릿 오카운트 감사가 speakers/LA(32개)에 이어 speakers/MY(8개 전부)까지 완료되었다. speakers/db(GSL8/GSL12)는 mechanical_safety가 단일 placeholder 행이라 해당 없음 확인 완료. 다음 세션은 새 작업을 찾는 것부터 시작 — git 커밋 여부를 사용자에게 먼저 확인할 것.)
+- [ ] **`upload/` 폴더에 Meyer Sound 신규 제품 대량 투입됨(2026-07-18 오후) — 파싱 시작 대기**. 컨텍스트 클리어 직후 시작할 다음 작업. speakers/MY 스켈레톤(PANTHER/TIGRA/LEOPARD/LINA)을 그대로 재사용 가능 — self-powered 아키텍처, Linear_Peak_SPL/전류 기반 소비전력 등 기존에 확립된 Key 체계와 호환될 가능성 높음(단, 서브우퍼 제품군이라 LF-only 구조일 것 — Way_Count/transducers 섹션은 자체 판단 필요, "이름으로 구조 짐작 금지" 원칙 준수).
+  - **원본 3종(AE+SPS+OM) 완비**: 2100-LFC.
+  - **OM+SPS만(AE 없음)**: 750-LFC, 900-LFC, MM-10, USW-112P, USW-112XP, USW-210P.
+  - **AE+SPS만(OM 없음)**: USW-121P.
+  - **SPS만(OM/AE 둘 다 없음)**: VLFC, X-400C.
+  - **극히 제한적 — "Preliminary Product Information"만 존재(정식 Datasheet/OM 아님, 프리릴리즈 추정)**: 1800-LFC — 파싱 가능 여부 자체를 먼저 판단할 것, 정식 스펙 문서가 아니므로 무결성 원칙상 데이터가 부족할 수 있음.
+  - **제품 전용 문서 아님, 브랜드 공용 참고자료로 추정(References/ 폴더 후보, speakers/LA/References/ 전례 참조)**: "Installation Instructions — IntelligentDC Products Wiring Verification.pdf", "Wiring_ 48 V IntelligentDC loudspeakers.pdf" — IntelligentDC는 Meyer의 데이지체인 배선/전원분배 시스템으로 추정, 여러 제품에 걸쳐 참조될 수 있음. speakers/MY/References/ 폴더가 아직 없으므로 신설 필요.
+  - **권장 진행 순서**: 원본이 가장 풍부한 2100-LFC부터 시작(TIGRA 전례와 동일 이유) → OM+SPS 완비 제품 6개 순차 진행 → AE+SPS만 있는 USW-121P → SPS만 있는 VLFC/X-400C → 1800-LFC는 별도 판단. **제품 1개씩 순차 처리, 서브에이전트 병렬 금지**(운영 규칙 1 참조).
 
 ## 참고
 

@@ -14,13 +14,29 @@
 
 ## 현재 보유 제품 목록 (2026-07-18 기준, 총 67개)
 
-| 카테고리 | 브랜드 | 제품 수 | 최신 파일 위치 | 제품 |
-|---|---|---|---|---|
-| 앰프 | L-Acoustics | 6 | [`amplifiers/LA/`](amplifiers/LA/) | LA1.16i, LA2Xi, LA4X, LA7.16, LA7.16i, LA12X |
-| 앰프 | d&b audiotechnik | 10 | [`amplifiers/db/`](amplifiers/db/) | 5D, 5DM, 10D, 25D, 30D, 40D, D25, D40, D80, D90 |
-| 스피커 | L-Acoustics | 41 | [`speakers/LA/`](speakers/LA/) | K 시리즈(K1/K2/K3/K3i/Kara II/Kara IIi/Kiva II/KS21/KS21i/KS28/L2/L2D, 12개), A 시리즈(A10/A15, Focus·Wide, 8개), X 시리즈(X4/X6/X8/X12/X15/5XT, 8개), 서브우퍼(SB6/SB10/SB15/SB18, 7개), 콜리니어(Soka/Syva, 5개), CS1 |
-| 스피커 | d&b audiotechnik | 2 | [`speakers/db/`](speakers/db/) | GSL8, GSL12 |
-| 스피커 | Meyer Sound | 8 | [`speakers/MY/`](speakers/MY/) | PANTHER(L/M/W), TIGRA(L/W), LEOPARD(+M80), LINA |
+| 카테고리 | 브랜드 | 제품 수 | 폴더 |
+|---|---|---|---|
+| 앰프 | L-Acoustics | 6 | [`amplifiers/LA/`](amplifiers/LA/) |
+| 앰프 | d&b audiotechnik | 10 | [`amplifiers/db/`](amplifiers/db/) |
+| 스피커 | L-Acoustics | 41 | [`speakers/LA/`](speakers/LA/) |
+| 스피커 | d&b audiotechnik | 2 | [`speakers/db/`](speakers/db/) |
+| 스피커 | Meyer Sound | 8 | [`speakers/MY/`](speakers/MY/) |
+
+**앰프 — L-Acoustics**: LA1.16i, LA2Xi, LA4X, LA7.16, LA7.16i, LA12X
+
+**앰프 — d&b audiotechnik**: 5D, 5DM, 10D, 25D, 30D, 40D, D25, D40, D80, D90
+
+**스피커 — L-Acoustics** (시리즈별로 축약):
+- K Series — K1, K2, K3, K3i, Kara II, Kara IIi, Kiva II, KS21, KS21i, KS28, L2, L2D (12개)
+- A Series — A10/A15 Focus·Wide (8개)
+- X Series — X4, X6, X8, X12, X15, 5XT (8개)
+- Subwoofer — SB6, SB10, SB15, SB18 (7개)
+- Colinear — Soka, Syva (5개)
+- CS1 (1개)
+
+**스피커 — d&b audiotechnik**: GSL8, GSL12
+
+**스피커 — Meyer Sound**: PANTHER(L/M/W), TIGRA(L/W), LEOPARD(+M80), LINA
 
 목록은 계속 갱신되므로, 정확한 최신 파일명은 해당 브랜드 폴더를 열어 버전 번호가 가장 높은 `.md` 파일을 확인하시면 됩니다.
 
