@@ -19,10 +19,10 @@
 - **완료 — Null Report 결합형 불릿 오카운트 감사, speakers 전체 40개 파일(2026-07-18)**: speakers/LA 32개(preset_guide_and_matching 다중 행 부분-null 26개 + 기타 결합형 불릿 6개) + speakers/MY 8개(mechanical_safety Safe_Limit 다중 행, PANTHER x3/TIGRA x2/LEOPARD x2/LINA 전부) 정정. 데이터(Key/Value/Unit)는 건드리지 않고 Null Report 요약 통계만 정정. 상세는 `TODO_Archive.md` 참조.
 - **완료 — Meyer Sound 신규 제품 3종(TIGRA/LEOPARD/LINA) 투입(2026-07-18)**: 5개 파일 신규 작성, 신규 Key 9종 발견 및 PANTHER/TIGRA 전체에 양방향 동기화 완료. 상세는 `TODO_Archive.md` 참조.
 - **완료 — Session_Transfer_v1.10.md 갱신**: v1.9가 크게 낡아 있어 전면 재작성.
-- TaskList 도구(#13~#39)에도 동일 항목이 있음 — 이 파일과 병행 사용.
+- **TaskList 도구는 파일이 아닌 하네스 자체 기능(세션/도구 상태)이라 영구 보존되지 않는다** — 과거 세션에서 병행 사용했던 흔적(#13~#39)이 있었으나 2026-07-18 확인 결과 비어있음(초기화됨). TODO.md/TODO_Archive.md(커밋되는 파일)만 신뢰할 것 — TaskList는 현재 세션 내 임시 작업 분해용으로만 필요시 보조 사용.
 - **Null Report 항목 수 재계산 시 특히 주의** — Key-Value 단순 리스트의 "콤바인된 불릿"뿐 아니라 **다중 행 테이블(preset_guide_and_matching/mechanical_safety 등)의 부분-null 컬럼도 행×컬럼 단위로 정확히 세어야 한다**(2026-07-18에 반복 확인된 패턴).
 - **서브에이전트 병렬 실행 시 세션 사용량 한도 주의** — 8개 동시는 실패 전례 있음, 4개 배치 병렬까지는 안정적 확인.
 - **changelog 기록 정확성 주의** — 완료 항목을 "완료"로 기록하기 전 실제로 파일을 grep/diff로 재확인할 것.
 - **버저닝 프로토콜 "변경 없음" 판명 시** — Duplicate+Archive까지 했더라도 실질 변경이 없다면 버전을 새로 만들지 않고 원상복구할 것.
 - **커밋된 파일 편집 전 항상 git status 먼저 확인** — 여러 파일을 순회 편집할 때 이미 커밋된 파일과 미커밋 파일이 섞여 있을 수 있다.
-- git: origin/main에는 91c62c3까지 푸시됨. 로컬에는 fab4b05까지 커밋 완료. 그 이후 상당한 변경이 누적 미커밋 상태 — **사용자 지시: 커밋하지 않고 계속 진행**, 다음 커밋도 명시적 요청 시에만. 다음 세션(또는 사용자 복귀 시) 커밋 여부부터 확인할 것.
+- git: origin/main에 4131d21까지 커밋+푸시 완료(2026-07-18, 사용자 명시적 지시). 작업 트리 클린, 미커밋 변경 없음. 다음 변경분도 사용자 명시적 요청 시에만 커밋.
