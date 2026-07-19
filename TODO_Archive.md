@@ -4,16 +4,42 @@
 
 형식: `- [완료/취소] YYYY-MM-DD — 항목 요약 (관련 파일/버전)`
 
-## 2026-07-18 (계속 7, 심야)
+## 2026-07-19 (계속 4)
+
+- [완료] Preset_Guide_OM_EN_29.0.md 전체(124페이지) 마크다운 작성 완료 + 후속 정정 3건: (1) 압축 텍스트→실제 마크다운 표, (2) 제품군별 표 분리 유지(4.2~4.8 통일), (3) 섹션 번호 체계(35.12~35.14로 정정, 최상위 36/37/38 오기 수정), (4) 섹션 38(Enclosure max SPL)이 Amp Bulletin과 동일 데이터셋임을 확인 — X4i~Kiva II 구간 LA4X/LA7.16(i)/LA12X 3열 병합 누락 및 KS21(i)~SB6i 행 누락(페이지가 KS28에서 끝난다고 오판)을 사용자 제공 데이터로 정정.
+
+## 2026-07-19 (계속 3)
+
+- [완료] K1-SB 신규 투입 — K1/K2의 오랜 컴패니언 서브우퍼를 독립 파일로 최초 투입(KS28 스켈레톤). K1 OM에 전용 스펙 표 없이 편입돼 있는 점, AE/SP 간 SPL·파워·치수 충돌 3건, LA8 단독구동 서술과 K1 OM 시스템표(LA12X만 등재) 간 불일치를 각주 보존. mechanical_safety 안전한계는 K1 OM p.31(이미지 전용 페이지)을 PowerShell+Windows.Data.Pdf로 렌더링해 확보(K1-BUMP, safe 20/max 24).
+- [완료] db AL60/AL90/ALi60/ALi90 4개 신규 투입 — 이 브랜드 최초의 "augmented array"/2-way 단일채널 완전 패시브 아키텍처(XSL8류 하이브리드와 다름), Kiva II 선례 원칙으로 Nominal_Impedance_Overall/RMS_Power_Handling_Overall 채택. ALi 계열은 이 브랜드 최초 EN54(화재/음성경보) 인증 확보. 신규 Key 없어 타 파일 동기화 불필요. 발견한 소스 결함: ALi90 AE 원문 자체의 무게 중복 오류(22kg/20kg), ALi60/90 AE의 IP 등급 병합필드 미채움 오류, SPS-OM 간 호환앰프 상충(30D+D20/D80 vs 30D+40D).
+
+## 2026-07-19 (계속 2)
+
+- [완료] speakers 카테고리 일괄 동기화 라운드 잔여 4갈래 전부 마무리. db XSLi8-SVS/XSLi12-SVS 2개(신규 Key 3종+누락된 signal_processing 섹션 신설), MY 신제품 9개(Peak_Power_Handling_10ms_Overall/Remote_Mute_Control 반영). LA 41개+db 23개에 Remote_Mute_Control 동기화는 **하지 않기로 결론 정정**(사용자 지적) — network_monitoring 섹션 전체가 self-powered 전용 개념이라 CUT_Mode_Available 선례와 동일하게 스코프 밖. haiku 서브에이전트로 이 64개 파일 동기화를 시도했으나 실제 편집 전(스크립트 작성 단계)에 중단, 파일 무변경 확인.
+
+## 2026-07-19
+
+- [완료] fork 중복 실행 사고(2026-07-18) 데이터 무결성 검증 — K1/K2/K3/K3i/Kara_II/Kara_IIi/Kiva_II/KS21/KS21i/KS28 + LA-Batch1(5XT 등 10개) 전부 grep 재확인, 신규 Key 2종 중복 행 없이 정상 반영 확인. K1/K2/K3i는 Archive에 편집 없는 순수 복제 스텁(K1_v1.12/K2_v1.6/K3i_v1.9, 직전 버전과 diff 완전 동일) 1개씩 남았으나 라이브 데이터엔 영향 없어 이력 보존 목적으로 그대로 둠.
+- [완료] speakers 카테고리 Key 커버리지 전수 재조사 — TODO.md가 세션 사이 진행된 db/MY 동기화 작업(오늘 날짜로 이미 반영됨)을 반영하지 못해 낡아 있던 것을 발견, grep으로 4개 신규 Key(Frequency_Response_4dB_Hz/Peak_Power_Handling_10ms_Overall/HFA_Function_Settings/Remote_Mute_Control) x LA/db/MY 전체 실측 후 TODO.md를 정확한 잔여 갭(db SVS 2개, MY 신제품 9개, LA 41개+db 23개의 Remote_Mute_Control)으로 재작성.
+
+## 2026-07-18 (계속 9)
+
+- [완료] d&b audiotechnik 대량 신규 제품 배치 전체 완료(21개 제품, 23개 파일: GSL8/GSL12 v1.9 소급 갱신 포함) — CCL8/12, CCLi8/12, KSL8/12, KSLi8/12, XSL8/12, XSLi8/12, XSLi8-SVS/12-SVS, T10, Ti10L, Ti10P, V8, V12, Vi8, Vi12. 이 라운드(T10~Vi12 7개 제품)의 주요 발견: T10이 이 프로젝트 최초의 현장 전환형 라인/포인트소스 겸용 제품(회전형 웨이브가이드+렌즈)이며, Ti10L/Ti10P의 진짜 차이는 지향각 고정이 아니라 "라인어레이 리깅 장비 유무"임을 원본 재확인으로 정정(TODO의 기존 추정 오류 시정). V8/V12/Vi8/Vi12는 3-way 다이폴 순수 라인어레이(포인트소스 모드 없음, HFA 비적용). 신규 Key: `HFA_Function_Settings`(T10/Ti10L/Ti10P, PS setup 전용 HF 감쇠), `NL4_Pinout_Pin1/Pin2`(Ti10L/Ti10P/Vi8/Vi12 커넥터), `Peak_Power_Handling_10ms_Overall`(CCL8에서 기신설, T10/V8/V12/Vi8/Vi12 재사용) — speakers 카테고리 전체 일괄 동기화는 아직 미착수(다음 TODO 항목 참조). 원본 자체 오류 다수 발견·각주 보존: T10 AE "24 cabinets" vs Rigging manual "20 cabinets" 충돌, V8/V12/Vi8/Vi12 AE 깊이치수 "406mm"가 명시 인치값(18")과 환산 불일치(도면의 460mm 채택), Vi8/Vi12 Manual 본문의 "NLT4 F/M" 서술이 자체 AE/기술사양표(NL4 M)와 상충(V8/V12 텍스트의 미수정 잔재로 판단). upload/ 폴더 완전히 비움, ArraySight 브랜드 공용 참고자료는 speakers/db/References/로 이관.
+
+## 2026-07-18 (계속 8)
+
+- [완료] Meyer Sound 서브우퍼/LFC 대량 투입 배치 전체 완료 — 14개 제품, 21개 신규 파일: 2100-LFC, 750-LFC, 900-LFC(이상 LFC 계열, 2100-LFC가 이 브랜드 최초 서브우퍼), MM-10XP/MM-10AC/MM-10ACX(전원공급 방식이 근본적으로 다른 3모델 개별 파일 분리, 이 브랜드 최초 소형 설치용 서브우퍼), USW-112P(아날로그/디지털 옵션 병기)/USW-112XP(IntelligentDC DC전원)/USW-210P(단일 AC, OM 극히 짧음)/USW-121P(AES75/AES67 계열, OM 없음, 이 브랜드 최초 임베디드 Galileo GALAXY DSP 발견)/VLFC(이 브랜드 유일 Class AB/H MOSFET, 5600W 최대출력)/X-400C(이 브랜드 최초 시네마 시리즈, Pad Switch 신규 발견)/1800-LFC(프리릴리즈 단일 문서, 제조사 공식 자료이나 출시 전 단계라 정보량 최소, Null Report 확정적 비존재 0건인 유일 사례). 신규 Key `Analog_Input_Pinout_Case` 발견 및 기존 MY 8개 자매 파일(PANTHER_L/M/W→v1.2, TIGRA_L/W→v1.1, LEOPARD/LEOPARD_M80/LINA→v1.1) 즉시 동기화 완료. speakers/MY/References/에 IntelligentDC 배선 참고자료 2건 신규 이관. 원본 PDF 전부 Original_PDFs/{제품명}/에 파일링 완료. 후속 미완료 작업(다음 항목 참조): 신규 Key `Frequency_Response_4dB_Hz`/`Remote_Mute_Control`의 speakers 카테고리 전체 일괄 동기화.
+
+## 2026-07-18 (계속 7)
 
 - [완료] Null Report 결합형 불릿 오카운트 감사를 speakers/MY 8개 파일까지 확장 완료 — PANTHER-L/M/W/TIGRA-L/W/LEOPARD/LEOPARD-M80/LINA 전부 mechanical_safety의 Safe_Limit 미확인이 다중 Configuration 행을 1건으로 뭉뚱그린 동일 오카운트였음을 확인·정정(2~5개 행씩). speakers/db(GSL8/GSL12)는 단일 placeholder 행 구조라 해당 없음 확인. 이로써 speakers 카테고리 전체(51개 파일 중 이 패턴이 실제로 존재했던 40개) 정정 완료.
 
-## 2026-07-18 (계속 6, 심야)
+## 2026-07-18 (계속 6)
 
 - [완료] Null Report 결합형 불릿 오카운트 전수 감사(총 32개 파일) — K1에서 발견된 문제(총계가 "v1.6 시점 기준"에 멈춰있고 preset 표의 여러 행에 걸친 null 셀들이 "전 행"으로 뭉뚱그려져 1건으로만 카운트)를 계기로 speakers/LA 전체를 스캔. (A) preset_guide_and_matching 다중 행 부분-null 패턴 26개 파일을 서브에이전트 4개 배치로 정정: 5XT(v1.2), A10_Focus(v1.5), A10_Wide(v1.5), A10i_Focus(v1.5), A10i_Wide(v1.6), A15_Focus(v1.6), A15_Wide(v1.5), A15i_Focus(v1.5), A15i_Wide(v1.5), K1(v1.11), K3(v1.8), L2(v1.7), L2D(v1.4), SB15m(v1.2), SB18(v1.2), SB18_IIi(v1.2), Soka(v1.2), Sokar(v1.2), Syva(v1.2), X12(v1.4), X15_HiQ(v1.2), X4i(v1.4), X4r(v1.4), X6i(v1.4), X8(v1.4), X8i(v1.4). CS1_v1.2.md는 재확인 결과 이미 정확해 수정 불필요. (B) 추가로 발견된 다른 결합형 불릿 유형 6개 파일을 메인 세션에서 직접 정정: K2(v1.5)/K3i(v1.8)/Kara_II(v1.8)/Kara_IIi(v1.8) — Kiva II/L2 투입으로 신설된 3개 Key가 비적용 목록에 미반영된 패턴; Kiva_II(v1.6) — RMS_Power_Handling_LF/HF 결합 표기 오카운트; KS28(v1.8) — mechanical_safety Safe_Limit 3행이 "여러 셀"로 뭉뚱그려진 오카운트. 최종 grep 검증(파일 존재/Archive 이관/git status 정합성, orphan 0건)까지 완료. 데이터(Key/Value/Unit) 자체는 전혀 변경하지 않음 — 순수 요약 통계(Null Report 미확인/비적용/총계) 정정. 이 감사가 preset_guide_and_matching 외에 mechanical_safety/단순 Key 결합형 불릿까지 확장됨이 확인되어, speakers/LA 나머지 파일(db/MY 브랜드 포함)에도 유사 패턴이 남아있을 가능성을 TODO.md에 후속 항목으로 기록.
 - [완료] Session_Transfer_v1.10.md 신규 작성 — v1.9가 2026-07-17 시점에 멈춰 대규모 세션 작업(제품 수 28→67개 등)을 반영하지 못하고 있던 것을 전면 갱신, 이전 버전은 Archive/Archive_Meta/로 이관(Surgical Versioning Protocol 준수).
 
-## 2026-07-18 (계속 5, 심야)
+## 2026-07-18 (계속 5)
 
 - [완료] Meyer Sound 신규 제품 3종(TIGRA/LEOPARD/LINA) 파싱 — `upload/` 폴더 제공 원본으로 5개 파일 작성: TIGRA_L/TIGRA_W(지향각 베리언트 분리, PANTHER 선례 재확인 후 확정), LEOPARD/LEOPARD-M80(동일 패턴, 사용자 취침으로 재확인 없이 선례 자동 적용 — 다음 세션 재검토 여지 있음), LINA(베리언트 없는 단일 모델). Original_PDFs 3개 폴더 파일링 완료. 신규 발견 Key 9종(Linear_Peak_SPL/Phase_Response/THD_IM_TIM/Amplifier_Total_Output_Power + 전류 기반 소비전력 5종)을 PANTHER x3+TIGRA x2에 양방향 동기화 완료, 전 8개 파일 Key-list parity 검증 완료. `speakers/CLAUDE.md`에 Meyer Sound 브랜드 내부 다양성(AES75 유무/IP 등급 유무/W·A 단위 차이/LED 명칭 차이) 참고사항 추가.
 - [완료] 버저닝 프로토콜 위반 자체 발견·즉시 시정 — PANTHER_L/M/W 양방향 동기화 편집 중 이미 git 커밋된 v1.0 파일을 직접 편집한 실수를 곧바로 발견해 git HEAD 원본을 Archive로 복구하고 편집분을 v1.1로 이전. TODO.md에 "커밋된 파일 편집 전 git status 먼저 확인" 교훈 추가.

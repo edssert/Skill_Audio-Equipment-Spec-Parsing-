@@ -22,7 +22,8 @@
 새 브랜드/제품 투입 시 아래 두 축을 혼동하지 않는다:
 
 1. **브랜드 무관 범용 측정/개념 Key** — 부하 임피던스, 4대 어레이 SPL(`Max_SPL_4x_Array_Far_Field_Scaled_1m`), 다중 dB 임계값 대역폭(`Frequency_Response_3dB_Hz` 등), AES75 같은 업계 표준 채택 여부, LC 대역 유무, 단일 채널 패시브 아키텍처(`Nominal_Impedance_Overall`/`RMS_Power_Handling_Overall`) — 이런 개념은 어느 브랜드든 가질 수 있으므로 다른 제품 파일에도 **null로 동기화**한다.
-2. **브랜드/제품 고유 물리 설계·부품·커넥터 모델명이 Key 이름에 박힌 경우** — GSL의 `Front_LF_Transducer`, 커넥터 모델명을 그대로 딴 `PA_COM_Pinout_*`/`NLT4_Pinout_*`/`SpeakON_Pinout_*`/`Terminal_Block_Pinout_*`/`Connector_16Channel_Pinout`, d&b의 `CUT_Mode_*` — 이런 Key는 다른 제품 파일에 null로 끌어오지 않고 **아예 생성하지 않는다**(각 제품은 자기 자신의 실제 커넥터/기능을 자기 자신의 Key로 온전히 표현). 여러 개의 커넥터 모델별 핀아웃 Key 그룹이 한 파일에 공존해서는 안 된다 — 그 제품이 실제로 쓰는 커넥터의 Key 그룹만 남긴다.
+2. **브랜드/제품 고유 물리 설계·부품·커넥터 모델명이 Key 이름에 박힌 경우, 또는 근본적으로 다른 아키텍처 카테고리에만 성립하는 기능 개념인 경우** — GSL의 `Front_LF_Transducer`, 커넥터 모델명을 그대로 딴 `PA_COM_Pinout_*`/`NLT4_Pinout_*`/`SpeakON_Pinout_*`/`Terminal_Block_Pinout_*`/`Connector_16Channel_Pinout`, d&b의 `CUT_Mode_*`/`HFC_Function_Settings`/`Coupling_Function_Range` — 이런 Key는 다른 제품 파일에 null로 끌어오지 않고 **아예 생성하지 않는다**(각 제품은 자기 자신의 실제 커넥터/기능을 자기 자신의 Key로 온전히 표현). 여러 개의 커넥터 모델별 핀아웃 Key 그룹이 한 파일에 공존해서는 안 된다 — 그 제품이 실제로 쓰는 커넥터의 Key 그룹만 남긴다.
+   - **이름에 브랜드/모델명이 박혀 있지 않아도 이 규칙이 적용되는 경우(2026-07-19 확립)**: Meyer Sound(self-powered)에만 있는 `network_monitoring` 섹션 전체(`Remote_Mute_Control`, `AES67_Support`, `Service_Port_Type`, `Network_Protocol`, `Telemetry_Software`, `Device_Identification_Function`, `Network_Connectivity_LED` 등)는 이름 자체는 범용처럼 보이지만, "온보드 앰프+네트워크 인터페이스를 가진 self-powered 제품에서만 성립하는 개념"이라 패시브(외부 앰프 구동) 아키텍처인 LA/db에는 애초에 null로도 동기화하지 않는다 — 이 섹션 자체가 처음부터 LA/db 어느 파일에도 존재한 적이 없다. 신규 Key를 동기화 대상에 넣을지 판단할 때는 "이름에 고유명사가 있는가"뿐 아니라 "이 Key가 속한 상위 섹션/개념 자체가 특정 아키텍처 카테고리(self-powered vs 패시브 등)에서만 성립하는가"도 함께 확인할 것.
 
 측정 표준/프로토콜 번들(AES75 등)은 하위 수치(dBZ/dBZpk/dBA 등)를 개별 Key로 원자화하지 않고 하나의 복합값 Key로 유지한다.
 
