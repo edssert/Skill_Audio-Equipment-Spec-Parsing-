@@ -28,7 +28,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz | [X4_60]: 65 - 20000 / [X4]: 120 - 20000 | Hz |
+| Usable_Bandwidth_Hz | [X4_60]: 65 - 20000 / [X4]: 120 - 20000 (dB 기준 미표기) | Hz |
 | Frequency_Response_6dB_Hz [2] | [X4_60]: 77 - 20000 / [X4]: 145 - 20000 | Hz |
 | Frequency_Response_3dB_Hz [2] | [X4_60]: 105 - 20000 / [X4]: 180 - 20000 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

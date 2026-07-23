@@ -29,7 +29,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [1] | [SB10_60]: 25-70 / [SB10_100]: 27-118 / [SB10_200]: 29-180 | Hz |
+| Usable_Bandwidth_Hz [1] | [SB10_60]: 25-70 / [SB10_100]: 27-118 / [SB10_200]: 29-180 (-10 dB) | Hz |
 | Frequency_Response_6dB_Hz [1] | [SB10_60]: 27-64 / [SB10_100]: 30-96 / [SB10_200]: 32-125 | Hz |
 | Frequency_Response_3dB_Hz [1] | [SB10_60]: 30-55 / [SB10_100]: 33-80 / [SB10_200]: 35-87 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

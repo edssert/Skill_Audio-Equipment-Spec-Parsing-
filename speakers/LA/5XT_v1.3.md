@@ -37,7 +37,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz | [5XT]: 95 - 20000 | Hz |
+| Usable_Bandwidth_Hz | [5XT]: 95 - 20000 (dB 기준 미표기) | Hz |
 | Frequency_Response_6dB_Hz | 105 - 20000 | Hz |
 | Frequency_Response_3dB_Hz | 115 - 20000 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

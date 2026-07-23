@@ -28,7 +28,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [1] | [X6i_50]: 54 - 20000 / [X6i]: 69 - 20000 | Hz |
+| Usable_Bandwidth_Hz [1] | [X6i_50]: 54 - 20000 / [X6i]: 69 - 20000 (dB 기준 미표기) | Hz |
 | Frequency_Response_6dB_Hz [1] | [X6i_50]: 60 - 20000 / [X6i]: 76 - 20000 | Hz |
 | Frequency_Response_3dB_Hz [1] | [X6i_50]: 67 - 20000 / [X6i]: 84 - 20000 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

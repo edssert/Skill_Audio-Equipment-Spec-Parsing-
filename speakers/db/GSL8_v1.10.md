@@ -32,7 +32,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [1] | 41 - 20000 | Hz |
+| Usable_Bandwidth_Hz [1] | 41 - 20000 (-10 dB, IEC60268) | Hz |
 | Frequency_Response_5dB_Hz | 45 - 18000 | Hz |
 | Frequency_Response_6dB_Hz | null | Hz |
 | Frequency_Response_3dB_Hz | null | Hz |

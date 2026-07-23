@@ -28,7 +28,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [1] | [SB6_60]: 29 - null / [SB6_100]: 29 - null / [SB6_200]: 32 - null | Hz |
+| Usable_Bandwidth_Hz [1] | [SB6_60]: 29 - null / [SB6_100]: 29 - null / [SB6_200]: 32 - null (-10 dB) | Hz |
 | Frequency_Response_6dB_Hz [2] | [SB6_60]: 32-90 / [SB6_100]: 31-120 / [SB6_200]: 35-250 | Hz |
 | Frequency_Response_3dB_Hz [2] | [SB6_60]: 34-75 / [SB6_100]: 35-100 / [SB6_200]: 40-200 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

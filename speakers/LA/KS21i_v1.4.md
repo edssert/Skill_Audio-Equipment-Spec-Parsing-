@@ -28,7 +28,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz | [KS21_60]: 29 - 83 / [KS21_100]: 31 - 100 | Hz |
+| Usable_Bandwidth_Hz | [KS21_60]: 29 - 83 / [KS21_100]: 31 - 100 (dB 기준 미표기) | Hz |
 | Frequency_Response_6dB_Hz | [KS21_60]: 32 - 71 / [KS21_100]: 35 - 87 | Hz |
 | Frequency_Response_3dB_Hz | [KS21_60]: 35 - 60 / [KS21_100]: 40 - 78 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

@@ -31,7 +31,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [1] | [SB18_100]: 32-110 / [SB18_60]: 32-80 | Hz |
+| Usable_Bandwidth_Hz [1] | [SB18_100]: 32-110 / [SB18_60]: 32-80 (-10 dB) | Hz |
 | Frequency_Response_6dB_Hz [1] | [SB18_100]: 34-100 / [SB18_60]: 32-70 | Hz |
 | Frequency_Response_3dB_Hz [1] | [SB18_100]: 37-82 / [SB18_60]: 35-60 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

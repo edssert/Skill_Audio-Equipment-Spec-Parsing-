@@ -38,7 +38,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [1] | 48 - 19000 | Hz |
+| Usable_Bandwidth_Hz [1] | 48 - 19000 (-10 dB) | Hz |
 | Frequency_Response_5dB_Hz | 54 - 18000 | Hz |
 | Frequency_Response_6dB_Hz | null | Hz |
 | Frequency_Response_3dB_Hz | null | Hz |

@@ -29,7 +29,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz | [SOKA_60]: 60 - 20000 / [SOKA]: 100 - 20000 / [SOKA_200]: 200 - 20000 | Hz |
+| Usable_Bandwidth_Hz | [SOKA_60]: 60 - 20000 / [SOKA]: 100 - 20000 / [SOKA_200]: 200 - 20000 (dB 기준 미표기) | Hz |
 | Frequency_Response_6dB_Hz [2] | [SOKA_60]: 70 - 20000 / [SOKA]: 115 - 20000 / [SOKA_200]: 250 - 20000 | Hz |
 | Frequency_Response_3dB_Hz [2] | [SOKA_60]: 100 - 20000 / [SOKA]: 135 - 20000 / [SOKA_200]: 300 - 20000 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

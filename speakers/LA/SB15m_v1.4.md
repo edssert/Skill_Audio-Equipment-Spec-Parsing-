@@ -30,7 +30,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [1] | 40 - 120 | Hz |
+| Usable_Bandwidth_Hz [1] | 40 - 120 (-10 dB) | Hz |
 | Frequency_Response_6dB_Hz [1] | 46 - 102 | Hz |
 | Frequency_Response_3dB_Hz [1] | 49 - 85 | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

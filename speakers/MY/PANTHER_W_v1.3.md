@@ -37,7 +37,7 @@
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz [3] | 55 - 16000 | Hz |
+| Usable_Bandwidth_Hz [3] | 55 - 16000 (dB 기준 미표기) | Hz |
 | Frequency_Response_6dB_Hz | null | Hz |
 | Frequency_Response_3dB_Hz | null | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |

@@ -33,7 +33,7 @@ MM-10AC_v1.0.md와 완전 동일(3개 모델 공통 스펙).
 
 | Key | Value | Unit |
 |---|---|---|
-| Usable_Bandwidth_Hz | 33 - 228 | Hz |
+| Usable_Bandwidth_Hz | 33 - 228 (권장 동작 대역, dB 기준 미표기) | Hz |
 | Frequency_Response_6dB_Hz | null | Hz |
 | Frequency_Response_3dB_Hz | null | Hz |
 | Frequency_Response_5dB_Hz | null | Hz |
